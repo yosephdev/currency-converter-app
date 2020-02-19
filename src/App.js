@@ -6,16 +6,16 @@ import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 
 class App extends Component {
-  render () {
-   return (
-     <div>
-      <Navbar />
-      <br />      
-      <br />
-      <Footer />
-     </div>
-  );
-}     
+  render() {
+    return (
+      <div>
+        <Navbar />
+        <br />
+        <br />
+        <Footer />
+      </div>
+    );
+  }
 }
 
 export default App;
