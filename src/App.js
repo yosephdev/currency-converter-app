@@ -1,21 +1,37 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
+import React from 'react';
 import './App.css';
-import 'bootstrap/dist/css/bootstrap.min.css';
-import Navbar from './components/Navbar';
-import Footer from './components/Footer';
 
-class App extends Component {
-  render() {
-    return (
-      <div>
-        <Navbar />
-        <br />
-        <br />
-        <Footer />
-      </div>
-    );
-  }
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route
+} from "react-router-dom";
+
+import FirstPage from './containers/FirstPage/FirstPage';
+import SecondPage from './containers/SecondPage/SecondPage';
+import ThirdPage from './containers/ThirdPage/ThirdPage';
+
+
+const App = () => {
+  
+  return (
+    <Router>
+      <Switch>
+        <Route exact path='/'>
+          <FirstPage />
+        </Route>
+        <Route exact path='/convert'>
+          <SecondPage />
+        </Route>
+        <Route path='/rates'>
+          <ThirdPage />
+        </Route>
+      </Switch>
+    </Router>
+  );
 }
 
+
 export default App;
+
+

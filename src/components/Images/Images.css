@@ -1,0 +1,44 @@
+.images {
+   width: 100%;
+   height: 200px;
+   background: url('/img/photo1.png') no-repeat center center scroll;
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
+}
+
+.images h1{
+  width: 100%;
+  margin: 0 auto;
+  text-align: center;
+  font-size: 50px;
+  color: #DDDDDD;
+  font-weight: 600;
+  letter-spacing: 2px;
+  text-shadow: 5px 5px 5px #1A1616;
+}
+
+@media(max-width: 900px) {
+  .images h1 {
+    font-size: 40px;
+  }
+}
+
+@media(max-width: 768px) {
+  .images {
+    background: url('/img/photo2.png') no-repeat center center scroll;
+  }
+  .images h1 {
+    font-size: 35px;
+  }
+}
+
+@media(max-width: 568px) {
+  .images {
+    background: url('/img/photo2.png') no-repeat center center scroll;
+  }
+  .images h1 {
+    font-size: 28px;
+  }
+}
+

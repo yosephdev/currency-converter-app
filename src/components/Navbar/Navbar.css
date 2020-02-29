@@ -1,0 +1,166 @@
+.logo {
+  position: fixed;
+  float: left;
+  margin: 20px 36px;
+  font-weight: bold;
+  font-size: 24px;
+  font-size: 1.25em;
+  letter-spacing: 1px;
+}
+.logo span:hover{ 
+  text-decoration: none;
+}
+.logo i {
+  margin-right: 10px;
+  color: #EDEBEB;
+}
+.logo span {
+  color: #EDEBEB;
+}
+
+nav {
+  position: fixed;
+  width: 95%;
+  margin: 2.5%;
+  background: linear-gradient(270.65deg, #304549 -0.56%, rgba(34, 40, 41, 0.31) 103.66%);
+}
+
+nav.black ul{
+  background: linear-gradient(270.65deg, rgba(106,114,118,0.45), rgba(140,147,151,0.45));
+}
+
+nav.black {
+  margin: 0;
+  width: 100%;
+  transition: 0.3s;
+}
+
+nav ul {
+  list-style: none;
+  background: rgba(0, 0, 0, 0);
+  overflow: hidden;
+  padding: 0 30px 0;
+  text-align: right;
+  margin: 0 0px 0 0;
+  transition: 1s;
+}
+
+nav ul li {
+  display: inline-block;
+  padding: 20px 20px;
+  margin-right: 10px;
+  font-weight: bold;
+  letter-spacing: 2px;
+}
+
+nav ul li a {
+  text-decoration: none;
+  font-size: 20px;
+  color: #EDEBEB;
+}
+
+nav ul li a:hover {
+  text-decoration: none;
+}
+
+.menu-icon {
+  width: 100%;
+  text-align: right;
+  box-sizing: border-box;
+  padding: 15px 24px;
+  cursor: pointer;
+  display: none;
+}
+/* nav bar ends */
+
+/* media for 930px */
+@media(max-width: 930px) {
+  .logo {
+    font-size: 1.1em;
+  }
+  nav ul {
+    margin-right: 0px;
+  }
+  nav.black ul {
+    background: linear-gradient(270.65deg, rgba(106, 114, 118, 0.45), rgba(140, 147, 151, 0.45));
+  }
+  nav ul li {
+    margin-right: 0px;
+  }
+  nav ul li a {
+    margin-right: 0px;
+    font-size: 17px;
+  }
+}
+
+/* media for 768px */
+@media(max-width: 768px) {
+  .logo {
+    position: fixed;
+    top: 0;
+    margin-top: 19px;
+  }
+
+  nav {
+    width: 100%;
+    margin: 0
+  }
+
+  nav.black ul {
+    background: linear-gradient(270.65deg, rgba(106, 114, 118, 0.45), rgba(140, 147, 151, 0.45));
+  }
+
+  nav ul {
+    max-height: 0px;
+    margin: 0;
+  }
+
+  .showing {
+    max-height: 20em;
+  }
+
+  nav ul li {
+    box-sizing: border-box;
+    width: 100%;
+    padding: 12px 0;
+    text-align: center;
+  }
+
+  .menu-icon {
+    display: block;
+  }
+}
+
+/* media for 440px */
+@media(max-width: 440px) {
+  .menu-icon {
+    font-size: 13px;
+  }
+
+  .logo {
+    margin-left: 12px;
+    font-size: 1em;
+  }
+
+  .logo i {
+    margin-right: 5px;
+  }
+
+  nav.black ul {
+    background: linear-gradient(270.65deg, rgba(106,114,118,0.45), rgba(140,147,151,0.45));
+  }
+
+  nav ul {
+    margin-right: 0px;
+  }
+
+  nav ul li {
+    margin-right: 0px;
+    padding: 10px
+  }
+
+  nav ul li a {
+    margin-right: 0px;
+    font-size: 15px;
+  }
+}

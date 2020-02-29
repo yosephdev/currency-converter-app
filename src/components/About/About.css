@@ -1,0 +1,143 @@
+.about_me {
+  height: 380px;
+  width: 100%;
+  background: #D0D0D0;
+  color: black;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.about_me .container {
+ width: 750px;
+ height: 300px;
+ background: #E6E6E6;
+ padding: 28px;
+ box-shadow: 9px 9px 9px #727D84;
+ border-radius: 12px;
+ display: flex;
+ flex-direction: row;
+ justify-content: center;
+}
+
+
+.about_me .image {
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.about_me .message {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  /* justify-content: center; */
+  align-items: center;
+}
+
+.message p{
+  padding: 0;
+  font-size: 15px;
+  line-height: 18px;
+  text-align: justify;
+
+}
+
+.about_me img {
+  width: 100%;
+  border-radius: 50%;
+  box-shadow: 7px 7px 7px rgba(81, 81, 81, 0.6);
+}
+
+
+@media(max-width: 768px) {
+  .about_me {
+    height: 520px;
+  }
+  .about_me .container {
+    height: 460px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    
+  }
+  .about_me .image {
+    width: 180px;
+  }
+  .about_me .message {
+    width: 80%;
+    height: 240px;    
+    border-radius: 16px;    
+  }
+  .message p {
+    font-size: 14px;
+    line-height: 17px;
+  }
+
+}
+
+@media(max-width: 620px) {
+  .about_me .container {
+    width: 460px;
+  }
+
+  .about_me .image {
+    width: 180px;
+  }
+
+  .about_me .message {
+    width: 85%;
+  }
+  .message p {
+    font-size: 12px;
+    line-height: 17px;
+  }
+}
+
+
+@media(max-width: 620px) {
+  .about_me .container {
+    width: 360px;
+
+  }
+
+  .about_me .image {
+    width: 180px;
+  }
+
+  .about_me .message {
+    width: 90%;
+    padding: 15px
+  }
+
+  .message p {
+    font-size: 11px;
+    line-height: 16px;
+  }
+}
+
+
+@media(max-width: 390px) {
+  .about_me .container {
+    width: 300px;
+
+  }
+
+  .about_me .image {
+    width: 160px;
+  }
+
+
+
+  .about_me .message {
+    width: 95%;
+    padding: 15px
+  }
+
+  .message p {
+    font-size: 10px;
+    line-height: 15px;
+  }
+}

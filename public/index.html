@@ -6,14 +6,15 @@
   <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="theme-color" content="#000000" />
-  <! Fontawesome -->
-    <script src="https://kit.fontawesome.com/a97da01e51.js" crossorigin="anonymous"></script>
-    <meta name="description" content="Web site created using create-react-app" />
-    <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
-
-    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
-
-    <title>React App</title>
+  <meta name="author" content="Yoseph Berhane" />
+  <meta name="description" content=" Currency App web site created using create-react-app" />
+  <link href="https://fonts.googleapis.com/css?family=Ubuntu&display=swap" rel="stylesheet">
+  <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+  <script src="https://kit.fontawesome.com/a97da01e51.js" crossorigin="anonymous"></script>
+  <script src='./jquery.js'></script>
+  <script src="path/to/money.js"></script>
+  <title>Aksumite | Currency Converter</title>
+    
 </head>
 
 <body>
@@ -21,5 +22,25 @@
   <div id="root"></div>
 
 </body>
+<script type="text/javascript">
+    // Load exchange rates data via AJAX:
+    $.getJSON(
+    	// NB: you can use any source!
+        'https://api.exchangeratesapi.io/latest',
+        function(data) {
+            // Check money.js has finished loading:
+            if ( typeof fx !== "undefined" && fx.rates ) {
+                fx.rates = data.rates;
+                fx.base = data.base;
+            } else {
+                // If not, apply to fxSetup global:
+                var fxSetup = {
+                    rates : data.rates,
+                    base : data.base
+                }
+            }
+        }
+    );
+</script>
 
 </html>

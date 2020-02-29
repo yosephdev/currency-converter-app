@@ -1,0 +1,172 @@
+.api_resource {
+  height: 430px;
+  margin: 0;
+  background: #DBDEDE;
+  color: black
+}
+
+.api_resource .container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.api_resource h1 {
+  margin: 10px 0;
+  font-weight: 500;
+}
+
+.api {
+  height: 360px;
+  width: 85%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-evenly;
+
+}
+
+.api_desc {
+  width: 350px;
+  height: 310px;
+  background: #F4F7F8;
+  border-radius: 14px;
+  box-shadow: 10px 10px 10px rgba(1, 13, 15, 0.45);
+  padding: 30px;
+}
+
+.api_desc h2 {
+  font-style: normal;
+  font-weight: bold;
+  font-size: 28px;
+  line-height: 36px;
+}
+
+.api_desc p {
+  text-align: justify;
+  line-height: 26px;
+}
+
+.api_desc button {
+  background: #1A8FDD;
+  box-shadow: 5px 5px 5px rgba(1, 13, 15, 0.36);
+  border-radius: 5px;
+  height: 40px;
+  width: 125px;
+  font-size: 15px;
+  align-items: center;
+  color: #FFFFFF;
+  text-align: center;
+}
+
+.api_desc button a{
+  color: white;
+  text-decoration: none;
+}
+
+@media(max-width: 990px) {
+  .api_resource {
+    height: 400px;
+  }
+
+  .api {
+    height: 320px;
+    width: 100%
+  }
+
+  .api_desc {
+    width: 300px;
+    height: 270px;
+    padding: 20px
+  }
+
+  .api_desc h2 {
+    font-size: 22px;
+    line-height: 26px;
+  }
+
+  .api_desc p {
+    font-size: 14px;
+    text-align: justify;
+    line-height: 23px;
+  }
+}
+
+@media(max-width: 768px) {
+  .api_resource {
+    height: 360px;
+  }
+
+  .api {
+    width: 100%;
+    height: 280px
+  }
+
+  .api_desc {
+    width: 240px;
+    height: 240px;
+    padding: 20px
+  }
+
+  .api_desc h2 {
+    font-size: 20px;
+    line-height: 26px;
+  }
+
+  .api_desc p {
+    font-size: 12px;
+    text-align: justify;
+    line-height: 16px;
+  }
+
+  .api_desc button {
+    background: #1A8FDD;
+    height: 34px;
+    width: 115px;
+    font-size: 13px;
+  }
+}
+
+@media(max-width: 568px) {
+  .api_resource {
+    height: 600px;
+  }
+
+  .api_resource h1 {
+    font-size: 1.9em;
+  }
+
+  .api {
+    width: 100%;
+    height: 530px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+  }
+
+  .api_desc {
+    width: 280px;
+    height: 240px;
+    padding: 20px
+  }
+
+  .api_desc h2 {
+    font-size: 20px;
+    line-height: 26px;
+  }
+
+  .api_desc p {
+    font-size: 13px;
+    text-align: justify;
+    line-height: 19px;
+  }
+
+  .api_desc button {
+    background: #1A8FDD;
+    height: 34px;
+    width: 115px;
+    font-size: 13px;
+  }
+}
