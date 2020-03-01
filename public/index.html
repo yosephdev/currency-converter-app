@@ -10,9 +10,7 @@
   <meta name="description" content=" Currency App web site created using create-react-app" />
   <link href="https://fonts.googleapis.com/css?family=Ubuntu&display=swap" rel="stylesheet">
   <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
-  <script src="https://kit.fontawesome.com/a97da01e51.js" crossorigin="anonymous"></script>
-  <script src='./jquery.js'></script>
-  <script src="path/to/money.js"></script>
+  <script src="https://kit.fontawesome.com/a97da01e51.js" crossorigin="anonymous"></script> 
   <title>Aksumite | Currency Converter</title>
     
 </head>
@@ -20,27 +18,5 @@
 <body>
   <noscript>You need to enable JavaScript to run this app.</noscript>
   <div id="root"></div>
-
 </body>
-<script type="text/javascript">
-    // Load exchange rates data via AJAX:
-    $.getJSON(
-    	// NB: you can use any source!
-        'https://api.exchangeratesapi.io/latest',
-        function(data) {
-            // Check money.js has finished loading:
-            if ( typeof fx !== "undefined" && fx.rates ) {
-                fx.rates = data.rates;
-                fx.base = data.base;
-            } else {
-                // If not, apply to fxSetup global:
-                var fxSetup = {
-                    rates : data.rates,
-                    base : data.base
-                }
-            }
-        }
-    );
-</script>
-
 </html>
