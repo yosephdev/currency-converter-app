@@ -3,22 +3,19 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@popperjs/core": "^2.0.6",
+    "@fortawesome/fontawesome-svg-core": "^1.2.27",
+    "@fortawesome/free-solid-svg-icons": "^5.12.1",
+    "@fortawesome/react-fontawesome": "^0.1.8",
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.4.0",
     "@testing-library/user-event": "^7.2.1",
     "bootstrap": "^4.4.1",
     "components": "^0.1.0",
-    "eslint-plugin-flowtype": "^3.13.0",
-    "express": "^4.17.1",
-    "jquery": "^3.4.1",
-    "popper.js": "^1.16.1",
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
     "react-router-dom": "^5.1.2",
     "react-scripts": "3.4.0",
-    "styled": "^1.0.0",
-    "typescript": "^3.8.3"
+    "styled": "^1.0.0"
   },
   "scripts": {
     "start": "react-scripts start",

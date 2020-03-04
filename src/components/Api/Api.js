@@ -11,7 +11,7 @@ const Api = () => {
         <div className="api">
           <div className="api_desc">
             <h2>Exchange rates API</h2>
-            <p>Exchange rates API is a free service for current and historical foreign exchange rates published by the European Central Bank. This website project retrieved current currency exchange rate data from Exchange rates RESTful API.</p>
+            <p>Exchange rates API is a free service for current and historical foreign exchange rates published by the European Central Bank. This project retrieved currency exchange rate data from Exchange rates API.</p>
             <button><a href='https://exchangeratesapi.io/' target='_blank'>View API</a> </button>
           </div>          
         </div>
@@ -19,4 +19,5 @@ const Api = () => {
     </div>
   )
 }
+
 export default Api

@@ -14,7 +14,7 @@ const SecondPage = (props) => {
     <Fragment>
       <div className="header">
         <Navbar />
-        <div className='body'>
+        <div className='Convert-body'>
           <div className='container'>
           < Converter />
         </div>

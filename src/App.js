@@ -1,11 +1,6 @@
 import React from 'react';
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import './App.css';
-
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route
-} from "react-router-dom";
 
 import FirstPage from './containers/FirstPage/FirstPage';
 import SecondPage from './containers/SecondPage/SecondPage';
@@ -33,5 +28,6 @@ const App = () => {
 
 
 export default App;
+
 
 
