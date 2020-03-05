@@ -36,8 +36,7 @@ class Currency extends Component {
       crr = (crr * 102) / 100;
     } else if (action === 1) {
       crr = (crr * 98) / 100;
-    } else {
-      // Do nothing...
+    } else {      
     }
     var fixedCrr = crr.toFixed(4).toString();
     while (fixedCrr.length < 8) {
@@ -52,7 +51,7 @@ class Currency extends Component {
     let ratesArr = Object.keys(rates).map(i => rates[i])[2];
     let table = [];
     let children = [];
-    let displayedCurrencies = ["GBP", "RUB", "CAD", "USD", "CHF", "JPY", "EUR", "CNY", "HKD", "INR"];
+    let displayedCurrencies = ["ILS", "SEK", "NOK", "DKK", "GBP", "RUB", "CAD", "USD", "CHF", "JPY", "EUR", "CNY", "HKD", "AUD", "BGN", "BRL", "CZK", "HRK", "ISK", "KRW", "MXN", "MYR", "PHP", "RON", "PLN", "THB", "SGD", "NZD", "IDR", "HUF", "TRY", "ZAR","INR"];
     
     for (var key in ratesArr) {
       if (ratesArr.hasOwnProperty(key) && displayedCurrencies.includes(key)) {
