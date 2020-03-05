@@ -8,8 +8,7 @@
 
 .currency .container {
   margin-top: 8%;
-  width: 85%;
-  height: 85%;
+  width: 85%;  
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -35,8 +34,7 @@ td {
   border: none;
 }
 
-.currencyTable {
-  width: 50%;
+.currencyTable {  
   background-color: #000000d2;
   border-collapse: collapse;
   font-size: 32px;
