@@ -1,37 +1,29 @@
-import React from 'react';
-import './App.css';
+import React from "react";
+import { Router, Route, Link } from "react-router-dom";
+import "./App.css";
 
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route
-} from "react-router-dom";
+import HomePage from "./components/HomePage/HomePage";
+import TopBar from "./components/TopBar/TopBar";
+import RatesPage from "./components/RatesPage/RatesPage";
+import Footer from "./components/Footer/Footer";
+import {createBrowserHistory as createHistory } from "history";
+import HistoricRatesPage from './components/HistoricRatesPage/HistoricRatesPage';
+const history = createHistory();
 
-import FirstPage from './containers/FirstPage/FirstPage';
-import SecondPage from './containers/SecondPage/SecondPage';
-import ThirdPage from './containers/ThirdPage/ThirdPage';
+function App() {
 
 
-const App = () => {
-  
   return (
-    <Router>
-      <Switch>
-        <Route exact path='/'>
-          <FirstPage />
-        </Route>
-        <Route exact path='/convert'>
-          <SecondPage />
-        </Route>
-        <Route path='/rates'>
-          <ThirdPage />
-        </Route>
-      </Switch>
-    </Router>
+    <div className="App">
+      <Router history={history}>
+        <TopBar />
+        <Route path="/" exact component={HomePage} />
+        <Route path="/rates" exact component={RatesPage} />
+        <Route path="/historicrates" exact component={HistoricRatesPage} />              
+      </Router>
+      <Footer /> 
+    </div>
   );
 }
 
-
 export default App;
-
-

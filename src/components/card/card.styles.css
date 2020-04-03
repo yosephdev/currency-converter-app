@@ -1,0 +1,27 @@
+.card-container{
+    display: flex;
+    flex-direction: column;
+    background: linear-gradient(to bottom, rgba(255, 255, 255, 0.39) 0%, rgba(129, 129, 129, 0.15) 100%), radial-gradient(at top center, rgba(255, 255, 255, 0.788) 0%, rgba(139, 139, 139, 0.4) 120%) #989898; 
+    border: 1px solid grey;
+    border-radius: 5px;
+    padding: 25px;
+    cursor: pointer;
+    -mox-osx-font-smoothing: grayscale;
+    backface-visibility: hidden;
+    transform: translateZ(0);
+    transition: transform 0.25s ease-out;
+    color: rgb(1, 1, 61);
+    letter-spacing: 1px;
+    min-width: 190px;
+}
+
+.card-img{
+    height: auto;
+    width: 64px;
+    margin: 0 auto;
+}
+
+.card-container:hover{
+    transform: scale(1.05);
+    cursor: default;
+}

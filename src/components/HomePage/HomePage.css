@@ -1,0 +1,53 @@
+.card-body {
+    font-family: 'Roboto', sans-serif;
+    color: #121212;    
+}
+
+.card {
+    -webkit-box-shadow: 0 8px 6px -6px #000;
+    -moz-box-shadow: 0 8px 6px -6px #000;
+    box-shadow: 0 8px 6px -6px #000;   
+    align-items: center;
+    justify-content: center;
+    margin: 10px;
+    padding-top: 10px;
+}
+
+h1 {
+  margin: 0;
+  margin-bottom: .5rem;
+}
+
+.input {
+  border: 1px solid #333;
+  border-radius: .3em;
+  padding: .25rem;
+  width: 7em;
+}
+
+select {
+  margin-left: .5rem;
+}
+
+.equals {
+  font-weight: bold;
+  font-size: 2rem;
+}
+
+::-moz-selection {
+    background-color: rgb(255, 229, 0);
+    color: #121212;
+}
+
+::selection {
+    background-color: rgb(255, 229, 0);
+    color: #121212;
+}
+
+.CurrencyRow {
+  display: flex;
+  flex-direction: column;
+  margin: 0 32px;
+}
+
+
