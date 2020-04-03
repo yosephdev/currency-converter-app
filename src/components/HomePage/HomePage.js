@@ -3,16 +3,176 @@ import './HomePage.css';
 import styled from 'styled-components';
 import CurrencyRow from './CurrencyRow.js';
 
-
 const BASE_URL = 'https://api.exchangeratesapi.io/latest'
+
+const currencies = {
+  AUD: {
+    symbol: '$',
+    name: 'Australian dollar',
+  },
+  BGN: {
+    symbol: 'лв',
+    name: 'Bulgarian lev',
+  },
+  BRL: {
+    symbol: 'R$',
+    name: 'Brazilian real',
+  },
+  CAD: {
+    symbol: '$',
+    name: 'Canadian dollar',
+  },
+  CHF: {
+    symbol: 'Fr',
+    name: 'Swiss franc',
+  },
+  CNY: {
+    symbol: '¥',
+    name: 'Chinese yuan',
+  },
+  CZK: {
+    symbol: 'Kč',
+    name: 'Czech koruna',
+  },
+  DKK: {
+    symbol: 'kr',
+    name: 'Danish krone',
+  },
+  EUR: {
+    symbol: '€',
+    name: 'Euro',
+  },
+  GBP: {
+    symbol: '£',
+    name: 'British pound',
+  },
+  HKD: {
+    symbol: '$',
+    name: 'Hong Kong dollar',
+  },
+  HRK: {
+    symbol: 'kn',
+    name: 'Croatian kuna',
+  },
+  HUF: {
+    symbol: 'Ft',
+    name: 'Hungarian forint',
+  },
+  IDR: {
+    symbol: 'Rp',
+    name: 'Indonesian rupiah',
+  },
+  ILS: {
+    symbol: '₪',
+    name: 'Israeli new shekel',
+  },
+  INR: {
+    symbol: '₹',
+    name: 'Indian rupee',
+  },
+  ISK: {
+    symbol: 'kr',
+    name: 'Icelandic króna',
+  },
+  JPY: {
+    symbol: '¥',
+    name: 'Japanese yen',
+  },
+  KRW: {
+    symbol: '₩',
+    name: 'South Korean won',
+  },
+  MXN: {
+    symbol: '$',
+    name: 'Mexican peso',
+  },
+  MYR: {
+    symbol: 'RM',
+    name: 'Malaysian ringgit',
+  },
+  NOK: {
+    symbol: 'kr',
+    name: 'Norwegian krone',
+  },
+  NZD: {
+    symbol: '$',
+    name: 'New Zealand dollar',
+  },
+  PHP: {
+    symbol: '₱',
+    name: 'Philippine peso',
+  },
+  PLN: {
+    symbol: 'zł',
+    name: 'Polish złoty ',
+  },
+  RON: {
+    symbol: 'lei',
+    name: 'Romanian leu',
+  },
+  RUB: {
+    symbol: '₽',
+    name: 'Russian ruble',
+  },
+  SEK: {
+    symbol: 'kr',
+    name: 'Swedish krona',
+  },
+  SGD: {
+    symbol: '$',
+    name: 'Singapore dollar',
+  },
+  THB: {
+    symbol: '฿',
+    name: 'Thai baht',
+  },
+  TRY: {
+    symbol: '₺',
+    name: 'Turkish lira',
+  },
+  USD: {
+    symbol: '$',
+    name: 'United States dollar',
+  },
+  ZAR: {
+    symbol: 'R',
+    name: 'South African rand',
+  },
+}
+
+const CurrencyTable = (props) => {
+  const { base, rates } = props;
+  if (!rates) {
+    return null;
+  }
+  return (
+    <table className="table table-sm bg-light mt-4">
+      <thead>
+        <tr>
+          <th scope="col"></th>
+          <th scope="col" className="text-right pr-4 py-2">1.00 {base}</th>
+        </tr>
+      </thead>
+      <tbody>
+        {rates.map(currency =>
+          <tr key={currency.acronym}>
+            <td className="pl-4 py-2">{currency.name} <small>({currency.acronym})</small></td>
+            <td className="text-right pr-4 py-2">{currency.rate.toFixed(6)}</td>
+          </tr>
+        )}
+      </tbody>
+    </table>
+  )
+}
 
 function HomePage() {
   const [currencyOptions, setCurrencyOptions] = useState([])
-  const [fromCurrency, setFromCurrency] = useState()
+  const [fromCurrency, setFromCurrency] = useState('EUR')
   const [toCurrency, setToCurrency] = useState()
   const [exchangeRate, setExchangeRate] = useState()
   const [amount, setAmount] = useState(1)
   const [amountInFromCurrency, setAmountInFromCurrency] = useState(true)
+  const [rates, setRates] = useState([])
 
   let toAmount, fromAmount
   if (amountInFromCurrency) {
@@ -32,6 +192,15 @@ function HomePage() {
         setFromCurrency(data.base)
         setToCurrency(firstCurrency)
         setExchangeRate(data.rates[firstCurrency])
+        const rates = Object.keys(data.rates)
+          .filter(acronym => acronym !== fromCurrency)
+          .map(acronym => ({
+            acronym,
+            rate: data.rates[acronym],
+            name: currencies[acronym].name,
+            symbol: currencies[acronym].symbol,
+          }));
+        setRates(rates);
       })
   }, [])
 
@@ -53,6 +222,7 @@ function HomePage() {
     setAmountInFromCurrency(false)
   }
 
+  console.log(fromCurrency);
   return (
     <> 
     <Header>
@@ -79,7 +249,8 @@ function HomePage() {
             amount={toAmount}         
         />       
       </Main>
-      </>
+      <CurrencyTable base={fromCurrency} rates={rates} />
+    </>
   );
 }
 
