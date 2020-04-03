@@ -1,7 +1,8 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import './HomePage.css';
 import styled from 'styled-components';
 import CurrencyRow from './CurrencyRow.js';
+import Chart from 'chart.js';
 
 const BASE_URL = 'https://api.exchangeratesapi.io/latest'
 
@@ -173,6 +174,8 @@ function HomePage() {
   const [amount, setAmount] = useState(1)
   const [amountInFromCurrency, setAmountInFromCurrency] = useState(true)
   const [rates, setRates] = useState([])
+  const chartRef = useRef(null);
+  let chart;
 
   let toAmount, fromAmount
   if (amountInFromCurrency) {
@@ -202,7 +205,49 @@ function HomePage() {
           }));
         setRates(rates);
       })
-  }, [])
+  }, [fromCurrency, toCurrency])
+
+  const buildChart = (labels, data, label) => {
+    if (typeof chart !== "undefined") {
+      chart.destroy();
+    }
+    chart = new Chart(chartRef.current.getContext("2d"), {
+      type: 'line',
+      data: {
+        labels,
+        datasets: [
+          {
+            label: label,
+            data,
+            fill: false,
+            tension: 0,
+          }
+        ]
+      },
+      options: {
+        responsive: true,
+      }
+    })
+  }
+
+  useEffect(() => {
+    const endDate = new Date().toISOString().split('T')[0];
+    const startDate = new Date((new Date).getTime() - (30 * 24 * 60 * 60 * 1000)).toISOString().split('T')[0];
+
+    fetch(`https://alt-exchange-rate.herokuapp.com/history?start_at=${startDate}&end_at=${endDate}&base=${fromCurrency}&symbols=${toCurrency}`)
+      .then(res => res.json())
+      .then(data => {
+        if (data.error) {
+          throw new Error(data.error);
+        }
+
+        const chartLabels = Object.keys(data.rates);
+        const chartData = Object.values(data.rates).map(rate => rate[toCurrency]);
+        const chartLabel = `${fromCurrency}/${toCurrency}`;
+        buildChart(chartLabels, chartData, chartLabel);
+      })
+      .catch(error => console.error(error.message));
+  }, [fromCurrency, toCurrency])
 
   useEffect(() => {
     if (fromCurrency != null && toCurrency != null) {
@@ -250,6 +295,7 @@ function HomePage() {
         />       
       </Main>
       <CurrencyTable base={fromCurrency} rates={rates} />
+      <canvas ref={chartRef} />
     </>
   );
 }
