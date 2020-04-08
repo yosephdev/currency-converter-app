@@ -190,8 +190,7 @@ function HomePage() {
 
     useEffect(() => {
         fetch(apiURL)
-            .then(res => res.json())
-            .then(({ rates }) => setRates(rates))
+            .then(res => res.json())            
             .then(data => {
                 const firstCurrencyOption = Object.keys(data.rates)[0];
                 setCurrencyOptions([data.base, ...Object.keys(data.rates)]);
@@ -227,7 +226,7 @@ function HomePage() {
         setAmountInFromCurrency(false);
     }
 
-    console.log(fromCurrency);
+    console.log(fromCurrency);   
 
     return (
         <>
