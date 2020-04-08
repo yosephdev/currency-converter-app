@@ -15,7 +15,8 @@ class RatesPage extends Component {
   }
 
   componentDidMount() {
-    axios.get('https://api.exchangeratesapi.io/latest?base=EUR').then(res => {
+    axios.get('https://api.exchangeratesapi.io/latest?base=EUR')
+    .then(res => {
       const ratesArray = [];
       let idPlaceholder = 0;
 
@@ -62,9 +63,8 @@ class RatesPage extends Component {
           placeholder='search currencies'
           handleChange={this.handleChange}
         />
-        {currencies.length == 0 ? loader : <CardList currencies={filteredCurrencies} />}
-        {searchField.length > 0 && filteredCurrencies.length == 0 && (<h2>Currency not found...</h2>)}
-
+        {currencies.length === 0 ? loader : <CardList currencies={filteredCurrencies} />}
+        {searchField.length > 0 && filteredCurrencies.length === 0 && (<h2>Currency not found...</h2>)}
       </div>
     );
   }
