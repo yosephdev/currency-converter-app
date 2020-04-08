@@ -1,12 +1,3 @@
-<<<<<<< HEAD
-import React from 'react';
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import './App.css';
-
-import FirstPage from './containers/FirstPage/FirstPage';
-import SecondPage from './containers/SecondPage/SecondPage';
-import ThirdPage from './containers/ThirdPage/ThirdPage';
-=======
 import React from "react";
 import { Router, Route, Link } from "react-router-dom";
 import "./App.css";
@@ -20,7 +11,6 @@ import HistoricRatesPage from './components/HistoricRatesPage/HistoricRatesPage'
 const history = createHistory();
 
 function App() {
->>>>>>> 72adad96f214f0adf13da7b7f517cc53cb7eb307
 
 
   return (
