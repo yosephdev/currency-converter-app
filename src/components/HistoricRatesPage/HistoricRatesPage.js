@@ -149,7 +149,14 @@ function HistoricRatesPage() {
     const [exchangeRate, setExchangeRate] = useState(1);
     const [amount, setAmount] = useState(1);
     const [amountInFromCurrency, setAmountInFromCurrency] = useState(true);
+
+    const initalState = {
+        rates: [],
+    };
+
     const [rates, setRates] = useState([]);
+
+
     const chartRef = useRef(null);
     let chart;
 
@@ -181,7 +188,7 @@ function HistoricRatesPage() {
                     }));
                 setRates(rates);
             })
-    }, [fromCurrency, toCurrency])
+    }, [fromCurrency])
 
     const buildChart = (labels, data, label) => {
         if (typeof chart !== "undefined") {
@@ -208,7 +215,7 @@ function HistoricRatesPage() {
 
     useEffect(() => {
         const endDate = new Date().toISOString().split('T')[0];
-        const startDate = new Date((new Date).getTime() - (30 * 24 * 60 * 60 * 1000)).toISOString().split('T')[0];
+        const startDate = new Date((new Date()).getTime() - (30 * 24 * 60 * 60 * 1000)).toISOString().split('T')[0];
 
         fetch(`https://alt-exchange-rate.herokuapp.com/history?start_at=${startDate}&end_at=${endDate}&base=${fromCurrency}&symbols=${toCurrency}`)
             .then(res => res.json())
@@ -223,6 +230,7 @@ function HistoricRatesPage() {
                 buildChart(chartLabels, chartData, chartLabel);
             })
             .catch(error => console.error(error.message));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [fromCurrency, toCurrency])
 
     useEffect(() => {
