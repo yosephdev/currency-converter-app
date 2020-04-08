@@ -163,7 +163,7 @@ const CurrencyTable = (props) => {
 }
 
 function HomePage() {
-    const apiURL = 'https://api.exchangeratesapi.io/latest';
+    const apiURL = 'https://api.exchangeratesapi.io/latest';  
 
     const [currencyOptions, setCurrencyOptions] = useState([]);
     const [fromCurrency, setFromCurrency] = useState('EUR');
@@ -171,7 +171,12 @@ function HomePage() {
     const [exchangeRate, setExchangeRate] = useState(1);
     const [amount, setAmount] = useState(1);
     const [amountInFromCurrency, setAmountInFromCurrency] = useState(true);
-    const [rates, setRates] = useState([]);
+    
+    const initalState = {
+        rates: [],
+    };
+    
+    const [rates, setRates] = useState([]); 
 
 
     let toAmount, fromAmount;
@@ -186,6 +191,7 @@ function HomePage() {
     useEffect(() => {
         fetch(apiURL)
             .then(res => res.json())
+            .then(({ rates }) => setRates(rates))
             .then(data => {
                 const firstCurrencyOption = Object.keys(data.rates)[0];
                 setCurrencyOptions([data.base, ...Object.keys(data.rates)]);
@@ -202,7 +208,7 @@ function HomePage() {
                     }))
                 setRates(rates);
             })
-    }, [fromCurrency, toCurrency])
+    }, [fromCurrency])
 
     useEffect(() => {
         if (fromCurrency != null && toCurrency != null) {
