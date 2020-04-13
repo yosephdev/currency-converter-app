@@ -163,20 +163,15 @@ const CurrencyTable = (props) => {
 }
 
 function HomePage() {
-    const apiURL = 'https://api.exchangeratesapi.io/latest';  
+    const apiURL = 'https://api.exchangeratesapi.io/latest';
 
     const [currencyOptions, setCurrencyOptions] = useState([]);
     const [fromCurrency, setFromCurrency] = useState('EUR');
-    const [toCurrency, setToCurrency] = useState();
+    const [toCurrency, setToCurrency] = useState('USD');
     const [exchangeRate, setExchangeRate] = useState(1);
     const [amount, setAmount] = useState(1);
     const [amountInFromCurrency, setAmountInFromCurrency] = useState(true);
-    
-    const initalState = {
-        rates: [],
-    };
-    
-    const [rates, setRates] = useState([]); 
+    const [rates, setRates] = useState([]);
 
 
     let toAmount, fromAmount;
@@ -190,13 +185,10 @@ function HomePage() {
 
     useEffect(() => {
         fetch(apiURL)
-            .then(res => res.json())            
+            .then(res => res.json())
             .then(data => {
-                const firstCurrencyOption = Object.keys(data.rates)[0];
                 setCurrencyOptions([data.base, ...Object.keys(data.rates)]);
-                setFromCurrency(data.base);
-                setToCurrency(firstCurrencyOption);
-                setExchangeRate(data.rates[firstCurrencyOption]);
+                setExchangeRate(data.rates[toCurrency]);
                 const rates = Object.keys(data.rates)
                     .filter(acronym => acronym !== fromCurrency)
                     .map(acronym => ({
@@ -207,13 +199,25 @@ function HomePage() {
                     }))
                 setRates(rates);
             })
-    }, [fromCurrency])
+    }, [])
 
     useEffect(() => {
         if (fromCurrency != null && toCurrency != null) {
-            fetch(`${apiURL}?base=${fromCurrency}&symbols=${toCurrency}`)
+            fetch(`${apiURL}?base=${fromCurrency}`)
                 .then(res => res.json())
-                .then(data => setExchangeRate(data.rates[toCurrency]));
+                .then(data => {
+                    setExchangeRate(data.rates[toCurrency])
+
+                    const rates = Object.keys(data.rates)
+                        .filter(acronym => acronym !== fromCurrency)
+                        .map(acronym => ({
+                            acronym,
+                            rate: data.rates[acronym],
+                            name: currencies[acronym].name,
+                            symbol: currencies[acronym].symbol,
+                        }))
+                    setRates(rates);
+                });
         }
     }, [fromCurrency, toCurrency]);
 
@@ -226,7 +230,7 @@ function HomePage() {
         setAmountInFromCurrency(false);
     }
 
-    console.log(fromCurrency);   
+    console.log('render');
 
     return (
         <>

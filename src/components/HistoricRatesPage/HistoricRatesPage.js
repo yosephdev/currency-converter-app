@@ -145,15 +145,10 @@ function HistoricRatesPage() {
 
     const [currencyOptions, setCurrencyOptions] = useState([]);
     const [fromCurrency, setFromCurrency] = useState('EUR');
-    const [toCurrency, setToCurrency] = useState();
+    const [toCurrency, setToCurrency] = useState('USD');
     const [exchangeRate, setExchangeRate] = useState(1);
     const [amount, setAmount] = useState(1);
     const [amountInFromCurrency, setAmountInFromCurrency] = useState(true);
-
-    const initalState = {
-        rates: [],
-    };
-
     const [rates, setRates] = useState([]);
 
 
@@ -173,11 +168,8 @@ function HistoricRatesPage() {
         fetch(apiURL)
             .then(res => res.json())
             .then(data => {
-                const firstCurrency = Object.keys(data.rates)[0]
-                setCurrencyOptions([data.base, ...Object.keys(data.rates)])
-                setFromCurrency(data.base)
-                setToCurrency(firstCurrency)
-                setExchangeRate(data.rates[firstCurrency])
+                setCurrencyOptions([data.base, ...Object.keys(data.rates)]);
+                setExchangeRate(data.rates[toCurrency]);
                 const rates = Object.keys(data.rates)
                     .filter(acronym => acronym !== fromCurrency)
                     .map(acronym => ({
@@ -185,11 +177,12 @@ function HistoricRatesPage() {
                         rate: data.rates[acronym],
                         name: currencies[acronym].name,
                         symbol: currencies[acronym].symbol,
-                    }));
+                    }))
                 setRates(rates);
-            })
-    }, [fromCurrency])
+            });
+    }, []);
 
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     const buildChart = (labels, data, label) => {
         if (typeof chart !== "undefined") {
             chart.destroy();
@@ -215,7 +208,7 @@ function HistoricRatesPage() {
 
     useEffect(() => {
         const endDate = new Date().toISOString().split('T')[0];
-        const startDate = new Date((new Date()).getTime() - (30 * 24 * 60 * 60 * 1000)).toISOString().split('T')[0];
+        const startDate = new Date((new Date).getTime() - (30 * 24 * 60 * 60 * 1000)).toISOString().split('T')[0];
 
         fetch(`https://alt-exchange-rate.herokuapp.com/history?start_at=${startDate}&end_at=${endDate}&base=${fromCurrency}&symbols=${toCurrency}`)
             .then(res => res.json())
@@ -230,16 +223,16 @@ function HistoricRatesPage() {
                 buildChart(chartLabels, chartData, chartLabel);
             })
             .catch(error => console.error(error.message));
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [fromCurrency, toCurrency])
+    }, [buildChart, fromCurrency, toCurrency])
 
     useEffect(() => {
         if (fromCurrency != null && toCurrency != null) {
-            fetch(`${apiURL}?base=${fromCurrency}&symbols=${toCurrency}`)
+            fetch(`${apiURL}?base=${fromCurrency}`)
                 .then(res => res.json())
                 .then(data => setExchangeRate(data.rates[toCurrency]))
         }
     }, [fromCurrency, toCurrency])
+
 
     function handleFromAmountChange(e) {
         setAmount(e.target.value)
@@ -251,7 +244,8 @@ function HistoricRatesPage() {
         setAmountInFromCurrency(false)
     }
 
-    console.log(fromCurrency);
+    console.log('render');
+
     return (
         <>
             <Main>
