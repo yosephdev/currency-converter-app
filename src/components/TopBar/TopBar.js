@@ -3,10 +3,10 @@ import Navbar from "react-bootstrap/Navbar";
 import Nav from "react-bootstrap/Nav";
 import { withRouter } from "react-router-dom";
 
-function TopBar ({ location }) {
+function TopBar({ location }) {
   const { pathname } = location;
 
-  return(
+  return (
     <Navbar bg="dark" expand="lg" variant="dark">
       <Navbar.Brand href="#home"> Currency Exchange App</Navbar.Brand>
       <Navbar.Toggle aria-controls="basic-navbar-nav" />
@@ -28,7 +28,7 @@ function TopBar ({ location }) {
         </Nav>
       </Navbar.Collapse>
     </Navbar>
-         
+
   );
 }
 

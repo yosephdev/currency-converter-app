@@ -186,8 +186,13 @@ function HomePage() {
     useEffect(() => {
         fetch(apiURL)
             .then(res => res.json())
+<<<<<<< HEAD
             .then(data => {                
                 setCurrencyOptions([data.base, ...Object.keys(data.rates)]);                
+=======
+            .then(data => {
+                setCurrencyOptions([data.base, ...Object.keys(data.rates)]);
+>>>>>>> master
                 setExchangeRate(data.rates[toCurrency]);
                 const rates = Object.keys(data.rates)
                     .filter(acronym => acronym !== fromCurrency)
