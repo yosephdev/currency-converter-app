@@ -8,7 +8,7 @@ function TopBar({ location }) {
 
   return (
     <Navbar bg="dark" expand="lg" variant="dark">
-      <Navbar.Brand href="#home"> Currency Exchange App</Navbar.Brand>
+      <Navbar.Brand href="#home"> Kurrency </Navbar.Brand>
       <Navbar.Toggle aria-controls="basic-navbar-nav" />
       <Navbar.Collapse id="basic-navbar-nav">
         <Nav className="ml-auto">
