@@ -7,20 +7,55 @@ Main {
 	 background-color: #89abbe;
 } 
 
-.currency-converter {
-	 padding: 15px 5px;
+.Converter {
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, .2);
+	width: 800px;
+	padding: 70px;
 }
- .currency-converter input {
-	 width: 20rem;
-	 height: 50px;
-	 border-radius: 5px;
-	 padding: 5px 10px;
-	 border-color: transparent ;
-	 outline-color: inherit !important;
+
+h2 {
+	text-align: center;
 }
- .currency-converter select {
-	 width: 5rem;
-	 height: 50px;
-	 border-radius: 5px;
-	 border-color: transparent;
+
+.Converter-body {
+	display: grid;
+	grid-template-columns: repeat(2, 1fr);
+	gap: 30px;
+}
+
+label {
+	color: gray;
+}
+
+select {
+	width: 100%;
+	height: 50px;
+	border: 0;
+	border-bottom: 1px solid gray;
+	outline: 0;
+}
+
+input,
+.to-amount {
+	font-size: 30px;
+}
+
+input {
+	margin: 30px 0;
+	width: 100%;
+}
+
+.to-amount {
+	text-align: center;
+}
+
+@media (max-width: 768px) {
+	.Converter {
+		width: calc(100% - 60px);
+		padding: 30px;
+	}
+
+	.Converter-body {
+		display: block;
+	}
 }
