@@ -11,7 +11,7 @@ function Footer() {
           <a className="badge badge-light" href="https://github.com/isakbet" target="_blank" rel="noopener noreferrer">GitHub</a>
         </div>
         <div>
-          <span className="mr-3 text-warning">Built by <a href="https://isakbet.github.io/Personal-Portfolio/" target="_blank" rel="noopener noreferrer">Yoseph Berhane</a></span>
+          <span className="mr-3 text-secondary">Built by <a href="https://yoseph.dev" target="_blank" rel="noopener noreferrer">Yoseph Berhane</a> with ☕ and 💚</span>
         </div>
       </footer>
     </div>

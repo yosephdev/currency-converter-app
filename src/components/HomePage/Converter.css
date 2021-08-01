@@ -1,16 +1,7 @@
-Main {
-	 width: 100%;
-	 height: auto;
-	 background-size: cover;
-	 background-position: center;
-	 background-repeat: no-repeat;
-	 background-color: #89abbe;
-} 
-
-.Converter {
+.Converter {	
 	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, .2);
 	width: 800px;
-	padding: 70px;
+	padding: 70px;	
 }
 
 h2 {
@@ -59,3 +50,6 @@ input {
 		display: block;
 	}
 }
+
+ 
+ 

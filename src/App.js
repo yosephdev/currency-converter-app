@@ -1,8 +1,8 @@
 import React from "react";
-import { Router, Route, Link } from "react-router-dom";
+import { Router, Route } from "react-router-dom";
 import "./App.css";
 
-import HomePage from "./components/HomePage/HomePage";
+import HomePage from "./components/HomePage/Converter";
 import TopBar from "./components/TopBar/TopBar";
 import RatesPage from "./components/RatesPage/RatesPage";
 import Footer from "./components/Footer/Footer";
