@@ -1,0 +1,12 @@
+.converted-output {
+  margin-top: 15px;
+}
+
+@media only screen and (max-width: 960px) {
+  body {
+    background-color: #112240;
+  }
+  h2 {
+    font-size: 1.2em;
+  }
+}

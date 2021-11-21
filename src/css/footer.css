@@ -1,0 +1,16 @@
+footer {
+  position: fixed;
+  width: 100%;
+  bottom: 0;
+  background-color: #112240;
+  color: #4eb3a5;
+  text-align: center;
+}
+
+footer > a {
+  color: #49757a;
+}
+
+footer > a:hover {
+  color: #64ffda;
+}

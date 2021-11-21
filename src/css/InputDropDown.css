@@ -1,0 +1,75 @@
+.btn-group {
+  position: relative;
+  top: -5px !important;
+  left: 20px !important;
+}
+
+.dropdown-toggle {
+  position: relative;
+  overflow-x: hidden;
+  top: -4px;
+  left: 5px;
+}
+
+.drop-container {
+  overflow-y: auto;
+  overflow-x: hidden !important;
+  z-index: 500;
+  height: 225px;
+  scrollbar-color: rgb(78, 179, 165) rgb(6, 10, 10) !important;
+  scrollbar-width: 10px !important;
+}
+
+.dropdown-menu {
+  position: relative !important;
+  overflow-x: hidden !important;
+  left: -270px !important;
+  top: -145px !important;
+  font-size: 1.75em !important;
+  z-index: 10000 !important;
+  border-radius: 25px !important;
+  border: 1px rgb(78, 179, 165) solid !important;
+  width: 326px !important;
+  background-color: #495670 !important;
+  color: white !important;
+  float: none !important;
+}
+
+@media only screen and (max-width: 1200px) {
+  .dropdown-toggle {
+    position: relative;
+    font-size: 0.8em;
+    top: -3px;
+    left: -2px;
+  }
+  .currency-link {
+    font-size: 0.9em;
+  }
+
+  .dropdown-menu {
+    position: absolute !important;
+    top: -48px !important;
+    left: 45px !important;
+    width: 202px !important;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .dropdown-toggle {
+    position: relative;
+    top: -4px;
+    left: -115px;
+  }
+  .currency-link {
+    font-size: 0.7em;
+  }
+  .dropdown-menu {
+    position: absolute !important;
+    left: -160px !important;
+    top: -45px !important;
+    width: 150px !important;
+  }
+  .drop-container {
+    height: 120px;
+  }
+}

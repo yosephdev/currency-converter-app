@@ -1,0 +1,47 @@
+.tab-container.container-fluid {
+  position: absolute !important;
+  top: 395px !important;
+  margin-left: 126px !important;
+  z-index: -10;
+}
+
+.btn-primary {
+  width: 100px !important;
+  transition: all 0.2s ease-in-out;
+}
+.btn-primary.active {
+  background-color: #233554 !important;
+  color: #64ffda !important;
+  border: 2px #4eb3a5 solid !important;
+  transform: scale(1.1);
+  z-index: 10;
+}
+
+.btn-primary.inactive {
+  background-color: #a8b2d1 !important;
+  color: #112240 !important;
+  border: 1px #4eb3a5 dashed !important;
+}
+
+.btn-primary:hover {
+  transform: scale(1.2);
+  z-index: 10;
+}
+
+@media only screen and (max-width: 1200px) {
+  .tab-container.container-fluid {
+    top: 580px !important;
+    margin-left: 56px !important;
+    transform: scale(0.9);
+    font-size: 0.7em !important;
+  }
+}
+
+@media only screen and (max-width: 760px) {
+  .tab-container.container-fluid {
+    top: 602px !important;
+    margin-left: 56px !important;
+    transform: scale(0.9);
+    font-size: 0.7em !important;
+  }
+}
