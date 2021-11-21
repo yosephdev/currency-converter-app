@@ -1,0 +1,11 @@
+.currency-link {
+  transition: all .2s ease-in-out;
+}
+
+.currency-link:hover {
+  cursor: pointer;
+  transform: scale(1.1);
+  color:#4eb3a5;
+  text-decoration: underline;
+  z-index:1000;
+}
