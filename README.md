@@ -6,7 +6,7 @@
 2. https://www.x-rates.com/table/?from=USD&amount=1 (this seems closer to the goals of the project)
 3. API: https://exchangeratesapi.io (todo: need to sign up)
     1. This API tracks exchange rates of 33 different currencies. They are:
-    2. 73bae01c122ba3be0c1a3d7278306dfd (KEY)
+    2.  (KEY)
     3. http://api.exchangeratesapi.io/v1/latest?access_key=73bae01c122ba3be0c1a3d7278306dfd&symbols=USD,AUD,CAD,PLN,MXN&format=1
     4. Alternate API:
        1.  https://altexchangerateapi.herokuapp.com/
@@ -34,7 +34,7 @@
   alert("£1 = $" + rate.toFixed(4))
 }
 
-fetch('https://api.exchangeratesapi.io/v1/latest?access_key=73bae01c122ba3be0c1a3d7278306dfd')
+fetch('https://api.exchangeratesapi.io/v1/latest?access_key=')
   .then((resp) => resp.json())
   .then((data) => fx.rates = data.rates)
   .then(demo)
