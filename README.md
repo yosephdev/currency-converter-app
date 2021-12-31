@@ -34,7 +34,7 @@
   alert("£1 = $" + rate.toFixed(4))
 }
 
-fetch('https://api.exchangeratesapi.io/v1/latest?access_key=73bae01c122ba3be0c1a3d7278306dfd')
+fetch('https://api.exchangeratesapi.io/v1/latest?access_key=')
   .then((resp) => resp.json())
   .then((data) => fx.rates = data.rates)
   .then(demo)
