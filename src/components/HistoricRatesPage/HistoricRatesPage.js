@@ -2,7 +2,7 @@ import React, { useEffect, useState, useRef } from 'react';
 import './HistoricRatesPage.css';
 import styled from 'styled-components';
 import CurrencyConverter from '../HomePage/CurrencyConverter.js';
-import Chart from 'chart.js';
+/*import Chart from 'chart.js';*/
 
 const currencies = {
   AUD: {
