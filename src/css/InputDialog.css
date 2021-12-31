@@ -1,0 +1,64 @@
+.converter {
+  position: fixed;
+  margin-left: 100px !important;
+  top: 70px;
+  height: 310px;
+  width: 90%;
+  border-radius: 25px;
+  border: 1px #16a183 solid;
+  background: rgb(17, 34, 64);
+  background: linear-gradient(
+    180deg,
+    rgb(29, 48, 70) 35%,
+    rgb(17, 34, 64) 100%
+  );
+  color: #a8b2d1;
+}
+
+input {
+  left: 85px !important;
+  display: inline-flex;
+  border-radius: 25px;
+  border: 1px #4eb3a5 solid;
+  background-color: #495670;
+  color: #ccd6f6;
+  width: 220px;
+  transform: scale(1.5, 1.8);
+  vertical-align: middle;
+  text-align: center;
+}
+
+/* Define an animation behavior */
+@keyframes spinner {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* This is the class name given by the Font Awesome component when icon contains 'spinner' */
+.fa-spinner {
+  /* Apply 'spinner' keyframes looping once every second (1s)  */
+  animation: spinner 1s linear infinite;
+}
+
+@media only screen and (max-width: 1200px) {
+  .converter {
+    position: fixed;
+    margin-left: 40px !important;
+    top: 60px !important;
+    height: 480px !important;
+    width: 90% !important;
+    border-radius: 25px !important;
+  }
+  input {
+    transform: scale(1.2, 1.3);
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  input {
+    width: 120px !important;
+    text-align: right;
+    padding-right: 5px;
+  }
+}

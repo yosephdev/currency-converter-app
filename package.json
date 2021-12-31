@@ -1,22 +1,32 @@
 {
-  "name": "currency-exchange-app",
+  "name": "currency-converter-v2",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "antd": "^4.1.0",
-    "axios": "^0.19.2",
-    "bootstrap": "^4.4.1",
-    "chart.js": "^2.8.0",
-    "formik": "^2.1.4",
-    "react": "^16.8.6",
-    "react-bootstrap": "^1.0.0",
-    "react-chartjs-2": "^3.0.4",
-    "react-dom": "^16.8.6",
-    "react-redux": "^7.2.0",
-    "react-router-dom": "^5.0.0",
-    "react-scripts": "^3.4.3",
-    "reactstrap": "^8.4.1",
-    "styled-components": "^5.0.1"
+    "@fortawesome/fontawesome-svg-core": "^1.2.35",
+    "@fortawesome/free-brands-svg-icons": "^5.15.3",
+    "@fortawesome/free-solid-svg-icons": "^5.15.3",
+    "@fortawesome/react-fontawesome": "^0.1.14",
+    "axios": "^0.21.1",
+    "bootstrap": "^5.1.1",
+    "chart.js": "^3.2.1",
+    "country-flag-icons": "^1.2.9",
+    "font-awesome": "^4.7.0",
+    "jquery": "^3.6.0",
+    "popper": "^1.0.1",
+    "popper.js": "^1.16.1",
+    "react": "^17.0.2",
+    "react-bootstrap": "^2.0.0-rc.0",
+    "react-chartjs-2": "^3.0.3",
+    "react-dom": "^17.0.2",
+    "react-native": "^0.64.0",
+    "react-router-dom": "^5.3.0",
+    "react-scripts": "4.0.3"
+  },
+  "devDependencies": {
+    "@testing-library/jest-dom": "^5.11.4",
+    "@testing-library/react": "^11.1.0",
+    "@testing-library/user-event": "^12.1.10"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -25,7 +35,10 @@
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
-    "extends": "react-app"
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
   },
   "browserslist": {
     "production": [
