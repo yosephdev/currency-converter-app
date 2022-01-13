@@ -141,7 +141,7 @@ const currencies = {
 
 
 function HistoricRatesPage() {
-    const apiURL = 'https://api.exchangeratesapi.io/latest';
+    const apiURL = 'https://altexchangerateapi.herokuapp.com/latest';
 
     const [currencyOptions, setCurrencyOptions] = useState([]);
     const [fromCurrency, setFromCurrency] = useState('EUR');
@@ -210,7 +210,7 @@ function HistoricRatesPage() {
         const endDate = new Date().toISOString().split('T')[0];
         const startDate = new Date((new Date).getTime() - (30 * 24 * 60 * 60 * 1000)).toISOString().split('T')[0];
 
-        fetch(`https://alt-exchange-rate.herokuapp.com/history?start_at=${startDate}&end_at=${endDate}&base=${fromCurrency}&symbols=${toCurrency}`)
+        fetch(`https://altexchangerateapi.herokuapp.com/history?start_at=${startDate}&end_at=${endDate}&base=${fromCurrency}&symbols=${toCurrency}`)
             .then(res => res.json())
             .then(data => {
                 if (data.error) {

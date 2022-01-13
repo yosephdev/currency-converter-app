@@ -4,7 +4,6 @@ import "./App.css";
 
 import HomePage from "./components/HomePage/HomePage";
 import TopBar from "./components/TopBar/TopBar";
-import RatesPage from "./components/RatesPage/RatesPage";
 import Footer from "./components/Footer/Footer";
 import {createBrowserHistory as createHistory } from "history";
 import HistoricRatesPage from './components/HistoricRatesPage/HistoricRatesPage';
@@ -17,8 +16,7 @@ function App() {
     <div className="App">
       <Router history={history}>
         <TopBar />
-        <Route path="/" exact component={HomePage} />
-        <Route path="/rates" exact component={RatesPage} />
+        <Route path="/" exact component={HomePage} />        
         <Route path="/historicrates" exact component={HistoricRatesPage} />              
       </Router>
       <Footer /> 

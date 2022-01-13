@@ -163,7 +163,7 @@ const CurrencyTable = (props) => {
 }
 
 function HomePage() {
-    const apiURL = 'https://api.exchangeratesapi.io/latest';
+    const apiURL = 'https://altexchangerateapi.herokuapp.com/latest';
 
     const [currencyOptions, setCurrencyOptions] = useState([]);
     const [fromCurrency, setFromCurrency] = useState('EUR');

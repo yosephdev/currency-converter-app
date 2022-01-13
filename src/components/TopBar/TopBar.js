@@ -7,26 +7,22 @@ function TopBar({ location }) {
   const { pathname } = location;
 
   return (
-    <Navbar bg="dark" expand="lg" variant="dark">
-      <Navbar.Brand href="#home"> Currency Exchange App</Navbar.Brand>
-      <Navbar.Toggle aria-controls="basic-navbar-nav" />
-      <Navbar.Collapse id="basic-navbar-nav">
-        <Nav className="ml-auto">
+    <Navbar bg="navbar navbar-dark bg-dark">
+      <Navbar.Brand href="#home">Currency Converter V2</Navbar.Brand>
+      <Navbar.Toggle aria-controls="navbarTogglerDemo03" />
+      <Navbar.Collapse id="navbarTogglerDemo03">
+        <Nav className="mr-auto mt-2 mt-lg-0">
           <Nav.Link href="/" active={pathname === "/"}>
-            Home
-          </Nav.Link>
-          <Nav.Link
-            href="/rates"
-            active={pathname.includes("/rates")}>
-            Current Rates
-          </Nav.Link>
+            Table
+          </Nav.Link>          
           <Nav.Link
             href="/historicrates"
             active={pathname.includes("/historicrates")}>
-            Historic Rates
+            Chart
           </Nav.Link>
         </Nav>
       </Navbar.Collapse>
+      
     </Navbar>
 
   );
