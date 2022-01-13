@@ -1,0 +1,17 @@
+
+.footer {
+    position:fixed;
+    width: 100%;
+    bottom: 0;
+    background-color: #9AC7BF;
+    color: black;
+    text-align: center;
+  }
+  
+  .footer > a {
+    color: black;
+  }
+  
+  .footer > a:hover{
+    color: teal;
+  }
