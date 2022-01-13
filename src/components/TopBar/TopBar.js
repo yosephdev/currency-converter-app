@@ -7,7 +7,7 @@ function TopBar({ location }) {
   const { pathname } = location;
 
   return (
-    <Navbar bg="navbar navbar-dark bg-dark">
+    <Navbar bg="navbar navbar-dark">
       <Navbar.Brand href="#home">Currency Converter V2</Navbar.Brand>
       <Navbar.Toggle aria-controls="navbarTogglerDemo03" />
       <Navbar.Collapse id="navbarTogglerDemo03">
