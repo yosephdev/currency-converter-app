@@ -1,15 +1,12 @@
-Main {
-	 width: 100%;
-	 height: auto;
-	 background-size: cover;
-	 background-position: center;
-	 background-repeat: no-repeat;
-	 background-color: #4387ac;
-} 
-
-canvas {
-	height: 430px !important;
-	z-index: 20;
+canvas {	
+	height: 450px !important;	
+	width: 1007px !important;	
+	margin: auto;	
+	margin-top: 10px;
+	background-color: rgb(245, 237, 237) !important;	
+	color: #404244 !important;
+	position: relative !important;
+	border: 1px dotted rgb(51, 6, 6);
   }
 
 .currency-converter {
@@ -18,7 +15,7 @@ canvas {
  .currency-converter input {
 	 width: 20rem;
 	 height: 50px;
-	 border-radius: 5px;
+	 border-radius: 10px;
 	 padding: 5px 10px;
 	 border-color: transparent ;
 	 outline-color: inherit !important;
@@ -26,6 +23,6 @@ canvas {
  .currency-converter select {
 	 width: 5rem;
 	 height: 50px;
-	 border-radius: 5px;
+	 border-radius: 8px;
 	 border-color: transparent;
 }
