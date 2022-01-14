@@ -199,18 +199,14 @@ function RatesPage() {
                         fill: false,
                         tension: 0,
                         spanGaps: true,
-                        borderColor: 'rgba(65, 192, 192, 0.9)',                
-                         
-                        
+                        backgroundColor: "rgba(153, 102, 255, 0.5)", //purple
+                        borderColor: "rgba(153, 102, 255, 1)",
                     }
                 ]
             },
             options: {
-                responsive: true,                
-                layout: {
-                    padding: 20
-                }
-
+                responsive: true,
+                maintainAspectRatio: false,
             }
         })
     }
@@ -256,20 +252,22 @@ function RatesPage() {
     return (
         <>
             <Main>
-                <CurrencyConverter
-                    currencyOptions={currencyOptions}
-                    selectedCurrency={fromCurrency}
-                    onChangeCurrency={e => setFromCurrency(e.target.value)}
-                    onChangeAmount={handleFromAmountChange}
-                    amount={fromAmount}
-                />
-                <CurrencyConverter
-                    currencyOptions={currencyOptions}
-                    selectedCurrency={toCurrency}
-                    onChangeCurrency={e => setToCurrency(e.target.value)}
-                    onChangeAmount={handleToAmountChange}
-                    amount={toAmount}
-                />
+                <section className="banner">
+                    <CurrencyConverter
+                        currencyOptions={currencyOptions}
+                        selectedCurrency={fromCurrency}
+                        onChangeCurrency={e => setFromCurrency(e.target.value)}
+                        onChangeAmount={handleFromAmountChange}
+                        amount={fromAmount}
+                    />
+                    <CurrencyConverter
+                        currencyOptions={currencyOptions}
+                        selectedCurrency={toCurrency}
+                        onChangeCurrency={e => setToCurrency(e.target.value)}
+                        onChangeAmount={handleToAmountChange}
+                        amount={toAmount}
+                    />
+                </section>
             </Main>
             <canvas ref={chartRef} />
         </>
@@ -278,6 +276,7 @@ function RatesPage() {
 
 
 const Main = styled.main`  
+  max-width: 1280px;
   height: 100%;
   margin: auto;    
   display: flex;
