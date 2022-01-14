@@ -6,7 +6,7 @@ function Footer() {
 
   return (
     <div className="footer">
-      <footer className="p-1 bg-dark">
+      <footer className="navbar footer fixed-bottom footer-light footer-shadow">
         <div className="mb-2">
           <a className="badge badge-light" href="https://github.com/isakbet" target="_blank" rel="noopener noreferrer">GitHub</a>
         </div>
