@@ -140,7 +140,7 @@ const currencies = {
 }
 
 
-function HistoricRatesPage() {
+function RatesPage() {
     const apiURL = 'https://altexchangerateapi.herokuapp.com/latest';
 
     const [currencyOptions, setCurrencyOptions] = useState([]);
@@ -180,7 +180,7 @@ function HistoricRatesPage() {
                     }))
                 setRates(rates);
             });
-    }, []);
+    }, [fromCurrency, toCurrency]);
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
     const buildChart = (labels, data, label) => {
@@ -188,7 +188,7 @@ function HistoricRatesPage() {
             chart.destroy();
         }
         chart = new Chart(chartRef.current.getContext("2d"), {
-            type: 'line',            
+            type: 'line',
             data: {
                 labels,
                 datasets: [
@@ -198,12 +198,19 @@ function HistoricRatesPage() {
                         borderWidth: 2,
                         fill: false,
                         tension: 0,
-                        borderColor: "black"
+                        spanGaps: true,
+                        borderColor: 'rgba(65, 192, 192, 0.9)',                
+                         
+                        
                     }
                 ]
             },
             options: {
-                responsive: true,
+                responsive: true,                
+                layout: {
+                    padding: 20
+                }
+
             }
         })
     }
@@ -246,8 +253,6 @@ function HistoricRatesPage() {
         setAmountInFromCurrency(false)
     }
 
-    console.log('render');
-
     return (
         <>
             <Main>
@@ -272,14 +277,14 @@ function HistoricRatesPage() {
 }
 
 
-const Main = styled.main`
-  max-width: 1024px;
-  height: 90%;
-  margin: auto;
+const Main = styled.main`  
+  height: 100%;
+  margin: auto;    
   display: flex;
   justify-content: center;
   align-items: center;
+  
 `
 
 
-export default HistoricRatesPage;
+export default RatesPage;
