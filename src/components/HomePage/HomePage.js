@@ -144,7 +144,7 @@ const CurrencyTable = (props) => {
         return null;
     }
     return (
-        <table className="table table-sm bg-light mt-4">
+        <table className="table table-secondary table-sm bg-light mt-4">
             <thead>
                 <tr>
                     <th scope="col"></th>
@@ -154,8 +154,8 @@ const CurrencyTable = (props) => {
             <tbody>
                 {rates.map(currency =>
                     <tr key={currency.acronym}>
-                        <td className="pl-4 py-2">{currency.name} <small>({currency.acronym})</small></td>
-                        <td className="text-right pr-4 py-2">{currency.rate.toFixed(6)}</td>
+                        <td className=" table-light pl-4 py-2">{currency.name} <small>({currency.acronym})</small></td>
+                        <td className=" table-success text-right pr-4 py-2">{currency.rate.toFixed(6)}</td>
                     </tr>
                 )}
             </tbody>
@@ -199,7 +199,7 @@ function HomePage() {
                     }))
                 setRates(rates);
             })
-    }, [])
+    }, [fromCurrency, toCurrency])
 
     useEffect(() => {
         if (fromCurrency != null && toCurrency != null) {
