@@ -230,12 +230,10 @@ function HomePage() {
         setAmountInFromCurrency(false);
     }
 
-    console.log('render');
-
     return (
         <>
             <Main>
-                <section class="banner">
+                <section className="banner">
                     <CurrencyConverter
                         currencyOptions={currencyOptions}
                         selectedCurrency={fromCurrency}
