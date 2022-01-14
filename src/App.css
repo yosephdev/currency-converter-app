@@ -15,6 +15,7 @@ body {
   background: #065381;
   color: #f4f4f4;
   font-size: 1.3rem;
+  padding-bottom: 70px; 
 }
 
 h1 {
@@ -36,5 +37,14 @@ h1 {
   @media screen and (min-width: 1200px) {
     .App {
       font-size: 1.5rem;
+    }
+  }
+
+  @media only screen and (max-width: 960px) {
+    body {
+      background-color: #065381;
+    }
+    h2 {
+      font-size: 1.2em;
     }
   }
