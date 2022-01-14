@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useRef } from 'react';
-import './HistoricRatesPage.css';
+import './RatesPage.css';
 import styled from 'styled-components';
 import CurrencyConverter from '../HomePage/CurrencyConverter.js';
 import Chart from 'chart.js';
@@ -188,15 +188,17 @@ function HistoricRatesPage() {
             chart.destroy();
         }
         chart = new Chart(chartRef.current.getContext("2d"), {
-            type: 'line',
+            type: 'line',            
             data: {
                 labels,
                 datasets: [
                     {
                         label: label,
                         data,
+                        borderWidth: 2,
                         fill: false,
                         tension: 0,
+                        borderColor: "black"
                     }
                 ]
             },
@@ -208,9 +210,9 @@ function HistoricRatesPage() {
 
     useEffect(() => {
         const endDate = new Date().toISOString().split('T')[0];
-        const startDate = new Date((new Date).getTime() - (30 * 24 * 60 * 60 * 1000)).toISOString().split('T')[0];
+        const startDate = new Date((new Date()).getTime() - (30 * 24 * 60 * 60 * 1000)).toISOString().split('T')[0];
 
-        fetch(`https://altexchangerateapi.herokuapp.com/history?start_at=${startDate}&end_at=${endDate}&base=${fromCurrency}&symbols=${toCurrency}`)
+        fetch(`https://altexchangerateapi.herokuapp.com/${startDate}..${endDate}?from=${fromCurrency}&to=${toCurrency}`)
             .then(res => res.json())
             .then(data => {
                 if (data.error) {
@@ -271,8 +273,8 @@ function HistoricRatesPage() {
 
 
 const Main = styled.main`
-  max-width: 1280px;
-  height: 100%;
+  max-width: 1024px;
+  height: 90%;
   margin: auto;
   display: flex;
   justify-content: center;
