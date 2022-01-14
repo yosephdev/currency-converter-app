@@ -16,8 +16,8 @@ function TopBar({ location }) {
             Table
           </Nav.Link>          
           <Nav.Link
-            href="/historicrates"
-            active={pathname.includes("/historicrates")}>
+            href="/rates"
+            active={pathname.includes("/rates")}>
             Chart
           </Nav.Link>
         </Nav>
