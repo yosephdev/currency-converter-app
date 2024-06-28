@@ -1,182 +1,116 @@
-// functions for fetch
+// utils.js
 
+// Cache for storing fetched data
+const cache = new Map();
+
+// Enhanced fetch helper functions
 export const checkStatus = (response) => {
   if (response.ok) {
     return response;
   }
-  throw new Error(
-    `Request failed with status: ${response.status} ${response.statusText}`
-  );
+  return response.json().then((err) => {
+    throw new Error(err.message || `HTTP error! status: ${response.status}`);
+  });
 };
 
 export const json = (response) => response.json();
 
-// list of currencies with flag, code, and name for each one
+// Fetch wrapper with error handling and caching
+export const fetchWithCaching = async (url, options = {}) => {
+  if (cache.has(url)) {
+    return cache.get(url);
+  }
 
+  try {
+    const response = await fetch(url, options);
+    await checkStatus(response);
+    const data = await json(response);
+    cache.set(url, data);
+    return data;
+  } catch (error) {
+    console.error("Fetch error:", error);
+    throw error;
+  }
+};
+
+// Currency information
 export const currencyInfo = [
-  {
-    flag: "🇦🇺",
-    code: "AUD",
-    currencyName: "Australian Dollar",
-  },
-  {
-    flag: "🇧🇬",
-    code: "BGN",
-    currencyName: "Bulgarian Lev",
-  },
-  {
-    flag: "🇧🇷",
-    code: "BRL",
-    currencyName: "Brazilian Real",
-  },
-  {
-    flag: "🇨🇦",
-    code: "CAD",
-    currencyName: "Canadian Dollar",
-  },
-  {
-    flag: "🇨🇭",
-    code: "CHF",
-    currencyName: "Swiss Franc",
-  },
-  {
-    flag: "🇨🇳",
-    code: "CNY",
-    currencyName: "Chinese Renminbi Yuan",
-  },
-  {
-    flag: "🇨🇿",
-    code: "CZK",
-    currencyName: "Czech Koruna",
-  },
-  {
-    flag: "🇩🇰 ",
-    code: "DKK",
-    currencyName: "Danish Krone",
-  },
-  {
-    flag: "🇪🇺",
-    code: "EUR",
-    currencyName: "Euro",
-  },
-  {
-    flag: "🇬🇧 ",
-    code: "GBP",
-    currencyName: "British Pound",
-  },
-  {
-    flag: "🇭🇰",
-    code: "HKD",
-    currencyName: "Hong Kong Dollar",
-  },
-  {
-    flag: "🇭🇷",
-    code: "HRK",
-    currencyName: "Croatian Kuna",
-  },
-  {
-    flag: "🇭🇺",
-    code: "HUF",
-    currencyName: "Hungarian Forint",
-  },
-  {
-    flag: "🇮🇩",
-    code: "IDR",
-    currencyName: "Indonesian Rupiah",
-  },
-  {
-    flag: "🇮🇱",
-    code: "ILS",
-    currencyName: "Israeli New Sheqel",
-  },
-  {
-    flag: "🇮🇳",
-    code: "INR",
-    currencyName: "Indian Rupee",
-  },
-  {
-    flag: "🇮🇸",
-    code: "ISK",
-    currencyName: "Icelandic Króna",
-  },
-  {
-    flag: "🇯🇵",
-    code: "JPY",
-    currencyName: "Japanese Yen",
-  },
-  {
-    flag: "🇰🇷",
-    code: "KRW ",
-    currencyName: "South Korean Won",
-  },
-  {
-    flag: "🇲🇽",
-    code: "MXN",
-    currencyName: "Mexican Peso",
-  },
-  {
-    flag: "🇲🇾",
-    code: "MYR",
-    currencyName: "Malaysian Ringgit",
-  },
-  {
-    flag: "🇳🇴",
-    code: "NOK",
-    currencyName: "Norwegian Krone",
-  },
-  {
-    flag: "🇳🇿",
-    code: "NZD",
-    currencyName: "New Zealand Dollar",
-  },
-  {
-    flag: "🇵🇭",
-    code: "PHP",
-    currencyName: "Philippine Peso",
-  },
-  {
-    flag: "🇵🇱",
-    code: "PLN",
-    currencyName: "Polish Złoty",
-  },
-  {
-    flag: "🇷🇴",
-    code: "RON",
-    currencyName: "Romanian Leu",
-  },
-  {
-    flag: "🇷🇺",
-    code: "RUB",
-    currencyName: "Russian Ruble",
-  },
-  {
-    flag: "🇸🇪",
-    code: "SEK",
-    currencyName: "Swedish Krona",
-  },
-  {
-    flag: "🇸🇬",
-    code: "SGD",
-    currencyName: "Singapore Dollar",
-  },
-  {
-    flag: "🇹🇭",
-    code: "THB",
-    currencyName: "Thai Baht",
-  },
-  {
-    flag: "🇹🇷",
-    code: "TRY",
-    currencyName: "Turkish Lira",
-  },
-  {
-    flag: "🇺🇸",
-    code: "USD",
-    currencyName: "United States Dollar",
-  },
-  {
-    flag: "🇿🇦",
-    code: "ZAR",
-    currencyName: "South African Rand",
-  },
+  { code: "AUD", currencyName: "Australian Dollar" },
+  { code: "BGN", currencyName: "Bulgarian Lev" },
+  { code: "BRL", currencyName: "Brazilian Real" },
+  { code: "CAD", currencyName: "Canadian Dollar" },
+  { code: "CHF", currencyName: "Swiss Franc" },
+  { code: "CNY", currencyName: "Chinese Renminbi Yuan" },
+  { code: "CZK", currencyName: "Czech Koruna" },
+  { code: "DKK", currencyName: "Danish Krone" },
+  { code: "EUR", currencyName: "Euro" },
+  { code: "GBP", currencyName: "British Pound" },
+  { code: "HKD", currencyName: "Hong Kong Dollar" },
+  { code: "HRK", currencyName: "Croatian Kuna" },
+  { code: "HUF", currencyName: "Hungarian Forint" },
+  { code: "IDR", currencyName: "Indonesian Rupiah" },
+  { code: "ILS", currencyName: "Israeli New Sheqel" },
+  { code: "INR", currencyName: "Indian Rupee" },
+  { code: "ISK", currencyName: "Icelandic Króna" },
+  { code: "JPY", currencyName: "Japanese Yen" },
+  { code: "KRW", currencyName: "South Korean Won" },
+  { code: "MXN", currencyName: "Mexican Peso" },
+  { code: "MYR", currencyName: "Malaysian Ringgit" },
+  { code: "NOK", currencyName: "Norwegian Krone" },
+  { code: "NZD", currencyName: "New Zealand Dollar" },
+  { code: "PHP", currencyName: "Philippine Peso" },
+  { code: "PLN", currencyName: "Polish Złoty" },
+  { code: "RON", currencyName: "Romanian Leu" },
+  { code: "RUB", currencyName: "Russian Ruble" },
+  { code: "SEK", currencyName: "Swedish Krona" },
+  { code: "SGD", currencyName: "Singapore Dollar" },
+  { code: "THB", currencyName: "Thai Baht" },
+  { code: "TRY", currencyName: "Turkish Lira" },
+  { code: "USD", currencyName: "United States Dollar" },
+  { code: "ZAR", currencyName: "South African Rand" },
 ];
+
+// Helper function to get currency info by code
+export const getCurrencyInfoByCode = (code) => {
+  return currencyInfo.find((currency) => currency.code === code) || null;
+};
+
+// Helper function to get flag image URL by currency code
+export const getFlagImageUrl = (currencyCode) => {
+  return `https://flagcdn.com/w20/${currencyCode
+    .slice(0, 2)
+    .toLowerCase()}.png`;
+};
+
+// Helper function to format currency amount
+export const formatCurrency = (amount, currency) => {
+  return new Intl.NumberFormat("en-US", {
+    style: "currency",
+    currency: currency,
+    minimumFractionDigits: 2,
+    maximumFractionDigits: 2,
+  }).format(amount);
+};
+
+// Helper function to sort currencies
+export const sortCurrencies = (currencies, sortBy = "code") => {
+  return [...currencies].sort((a, b) => a[sortBy].localeCompare(b[sortBy]));
+};
+
+// Function to convert currency
+export const convertCurrency = async (amount, fromCurrency, toCurrency) => {
+  const url = `https://api.frankfurter.app/latest?amount=${amount}&from=${fromCurrency}&to=${toCurrency}`;
+  const data = await fetchWithCaching(url);
+  return data.rates[toCurrency];
+};
+
+// Function to get historical rates
+export const getHistoricalRates = async (
+  startDate,
+  endDate,
+  baseCurrency,
+  quoteCurrency
+) => {
+  const url = `https://api.frankfurter.app/${startDate}..${endDate}?from=${baseCurrency}&to=${quoteCurrency}`;
+  return await fetchWithCaching(url);
+};
