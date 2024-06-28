@@ -1,236 +1,117 @@
 :root {
-  --primary-color: #3c40c6;
-  /* Cobalt Blue */
-  --secondary-color: #0fbcf9;
-  /* Robin's Egg Blue */
-  --highlight-color: #05c46b;
-  /* UFO Green */
-  --text-color: #1e272e;
-  /* Gunmetal */
-  --light-color: #f5f6fa;
-  /* Ghost White */
-  --font-family: 'Roboto', sans-serif;
-  --brand-color: #3c40c6;
+  --primary-color: #1976d2;     
+  --secondary-color: #03a9f4;   
+  --highlight-color: #4caf50;    
+  --text-color: #212121;         
+  --light-color: #f5f5f5;        
+  --brand-color: #1976d2;      
+  --error-color: #f44336;        
+  --border-radius: 4px;
+  --transition-speed: 0.3s;
 }
 
-@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,500;0,700;1,300&display=swap');
-
-body,
-.container-fluid,
-.nav-bar {
-  font-family: var(--font-family);
-  letter-spacing: 1px;
-}
-
-h1,
-#diff-currencies {
-  color: var(--light-color);
-  letter-spacing: 2px;
-}
-
-#converter-page,
-#exchange-page {
+/* Layout */
+.gradient-background {
   background: linear-gradient(var(--primary-color) 0%, var(--secondary-color) 100%);
+  min-height: 100vh;
+  padding: 24px;
+}
+
+/* Custom styles for Material-UI components */
+.MuiAppBar-root {
+  background-color: var(--primary-color) !important;
+}
+
+.MuiButton-root {
+  border-radius: var(--border-radius) !important;
+  transition: background-color var(--transition-speed) !important;
+}
+
+.MuiButton-containedPrimary {
+  background-color: var(--highlight-color) !important;
+}
+
+.MuiButton-containedPrimary:hover {
+  background-color: var(--primary-color) !important;
+}
+
+.MuiTextField-root, .MuiSelect-root {
+  background-color: var(--light-color);
+  border-radius: var(--border-radius);
+}
+
+.MuiInputBase-root {
+  border-radius: var(--border-radius) !important;
+}
+
+.MuiTableContainer-root {
+  background-color: var(--light-color);
+  border-radius: var(--border-radius);
+}
+
+.MuiTableCell-head {
+  background-color: var(--primary-color);
+  color: var(--light-color) !important;
+}
+
+.MuiTypography-root {
   color: var(--text-color);
+}
+
+/* Branding */
+.brand-text {
+  font-size: 1.5rem;
+  letter-spacing: 1.2px;
+  color: var(--brand-color);
 }
 
 .coin-icon {
   color: var(--text-color);
-  margin-right: 5px;
+  margin-right: 8px;
 }
 
-.custom-navbar-toggle {
-  border-color: #fff;
-  color: #fff;
-}
-
-.brand,
-#nav-links .brand,
-#nav-links .coin-icon,
-.footer-brand {
-  font-size: 1.5rem;
-  letter-spacing: 1.2px;
-  color: var(--brand-color);
-  height: 40px;
-  line-height: 36px;
-}
-
-#navbar-toggler {
-  color: var(--light-color);
-  border: none;
-}
-
-#navbar-toggler span {
-  background-image: url('./images/menu-icon.png');
-  width: 2em;
-}
-
-.nav-link {
-  /* margin-bottom: -30px; */
-  color: var(--secondary-color);
-  transition: ease-in-out;
-}
-
-.converter-block,
-.number-input[type="number"],
-#converter-page select,
-.input-border,
-#exchange-page select {
-  background-color: var(--light-color);
-  border: none;
-  border-radius: .5rem;
-}
-
-.number-input[type="number"] {
-  border-bottom: 1px dashed var(--text-color);
-}
-
-#converter-page select {
-  text-align: center;
-}
-
-.switch-icon,
-#navbar-toggler,
-#footer a {
-  color: var(--light-color);
-}
-
-.output-number {
-  padding: .375rem .75rem;
-}
-
-.chart,
-#exchange-table .heading-flag,
-#exchange-table .heading-amount,
-#exchange-table .heading-base,
-.base-wrapper,
-.table-wrapper,
-thead,
-tbody {
-  background-color: var(--light-color);
-  border-radius: 1rem;
-  color: var(--light-color);
-}
-
-#exchange-table th,
-#footer {
-  color: var(--text-color);
-  font-size: 18px;
-}
-
-#exchange-table .heading-flag {
-  border-radius: .6rem 0 0 .6rem;
-  box-shadow: -2px 0px 0 2px var(--highlight-color);
-}
-
-#exchange-table .heading-amount {
-  border-radius: 0 .6rem .6rem 0;
-  box-shadow: 2px 0px 0 2px var(--highlight-color);
-}
-
-#exchange-table tbody,
-#exchange-table thead,
-#exchange-table th,
-#exchange-table td {
-  border: none;
-}
-
-#exchange-table td {
-  font-size: 30px;
-}
-
-#footer {
+/* Footer */
+.footer {
   background-color: var(--secondary-color);
-  font-weight: 300;
+  color: var(--text-color);
+  padding: 24px 0;
 }
 
-#footer a {
+.footer a {
+  color: var(--light-color);
   text-decoration: none;
+  transition: color var(--transition-speed) ease-in-out;
 }
 
-#footer a:hover {
+.footer a:hover {
   color: var(--brand-color);
+}
+
+/* Form elements */
+.MuiOutlinedInput-root {
+  background-color: var(--light-color);
+}
+
+.MuiOutlinedInput-root:hover .MuiOutlinedInput-notchedOutline {
+  border-color: var(--primary-color);
+}
+
+.MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline {
+  border-color: var(--highlight-color);
+}
+
+/* Switch component */
+.MuiSwitch-colorPrimary.Mui-checked {
+  color: var(--highlight-color) !important;
+}
+
+.MuiSwitch-colorPrimary.Mui-checked + .MuiSwitch-track {
+  background-color: var(--highlight-color) !important;
 }
 
 /* Responsive Design */
-@media all and (min-width: 992px) {
-  .tab {
-    border: 15px solid transparent;
-  }
-
-  #converter-tab .active,
-  #exchange-tab .active {
-    background-color: var(--primary-color);
-    border: 15px solid var(--primary-color);
-    border-radius: 1rem 1rem 0 0;
-  }
-
-  #footer a {
-    font-size: 20px;
-  }
-
-  #footer .brand {
-    height: 40px;
-    line-height: 25px;
-  }
-}
-
-@media (max-width: 768px) {
-  .nav-link {
-    margin-bottom: 0;
-    padding: 10px;
-    font-size: 16px;
-  }
-
-  .navbar-nav {
-    display: flex;
-    flex-direction: column;
-  }
-}
-
-@media all and (min-width: 1200px) {
-  .converter-block {
-    background: transparent;
-  }
-
-  #input-block,
-  #output-block {
-    background-color: var(--light-color);
-    border-radius: 1rem;
-    padding: 3rem;
-    width: 45%;
-  }
-
-  #converter-page .switch-button {
-    font-size: 1.5rem;
-    width: 4rem;
-  }
-
-  .switch-btn-col {
-    position: absolute;
-    margin: auto;
-    text-align: center;
-    z-index: 1;
-  }
-
-  .base-wrapper {
-    position: fixed;
-  }
-
-  .base-block {
-    background-color: var(--light-color);
-    border: 4px solid var(--highlight-color);
-  }
-
-  #exchange-page select {
-    font-size: 30px;
-  }
-
-  #exchange-page .table-wrapper {
-    margin-top: 160px;
-  }
-
-  .footer-brand {
-    font-size: 1.3rem;
+@media (max-width: 600px) {
+  .gradient-background {
+    padding: 16px;
   }
 }
