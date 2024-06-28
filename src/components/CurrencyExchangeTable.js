@@ -1,48 +1,77 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { currencyInfo } from "./utils";
+import { currencyInfo, formatCurrency, getFlagImageUrl } from "./utils";
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableContainer,
+  TableHead,
+  TableRow,
+  Paper,
+  Typography,
+} from "@mui/material";
+import { styled } from "@mui/system";
 
+const StyledTableCell = styled(TableCell)(({ theme }) => ({
+  fontWeight: "bold",
+  backgroundColor: theme.palette.primary.main,
+  color: theme.palette.common.white,
+}));
+
+const FlagImg = styled("img")({
+  width: "20px",
+  marginRight: "8px",
+  verticalAlign: "middle",
+});
 
 const CurrencyExchangeTable = ({ exchangeRates, base, amount }) => {
-  const baseCurrency = currencyInfo.find((currency) => currency.code === base) || {};
-  const { flag: baseFlag, currencyName: baseName } = baseCurrency;
-
-  const tableTop = (
-    <tr>
-      <th className="heading-flag">{baseFlag}</th>
-      <th className="heading-base">
-        {base} - {baseName}
-      </th>
-      <th className="heading-amount">{amount}</th>
-    </tr>
-  );
-
-  const tableData = exchangeRates.map((item) => {
-    const correspondingInfo =
-      currencyInfo.find((infoItem) => infoItem.code === item.code) || {};
-    return (
-      <tr key={item.code}>
-        <td>
-          <span
-            role="img"
-            aria-label={`${correspondingInfo.currencyName} flag`}
-          >
-            {correspondingInfo.flag}
-          </span>
-        </td>
-        <td>
-          {item.code} - {correspondingInfo.currencyName}
-        </td>
-        <td className="text-xl-center">{(item.value * amount).toFixed(2)}</td>
-      </tr>
-    );
-  });
+  const baseCurrency =
+    currencyInfo.find((currency) => currency.code === base) || {};
+  const { currencyName: baseName } = baseCurrency;
 
   return (
-    <table id="exchange-table" className="table table-hover">
-      <thead className="d-xl-none">{tableTop}</thead>
-      <tbody>{tableData}</tbody>
-    </table>
+    <TableContainer component={Paper}>
+      <Table aria-label="currency exchange table">
+        <TableHead>
+          <TableRow>
+            <StyledTableCell>
+              <FlagImg src={getFlagImageUrl(base)} alt={`${baseName} flag`} />
+              {base} - {baseName}
+            </StyledTableCell>
+            <StyledTableCell align="right">{amount}</StyledTableCell>
+            <StyledTableCell align="right">Converted Amount</StyledTableCell>
+          </TableRow>
+        </TableHead>
+        <TableBody>
+          {exchangeRates.map((item) => {
+            const correspondingInfo =
+              currencyInfo.find((infoItem) => infoItem.code === item.code) ||
+              {};
+            const convertedAmount = item.value * amount;
+            return (
+              <TableRow key={item.code} hover>
+                <TableCell>
+                  <FlagImg
+                    src={getFlagImageUrl(item.code)}
+                    alt={`${correspondingInfo.currencyName} flag`}
+                  />
+                  <Typography component="span" variant="body2">
+                    {item.code} - {correspondingInfo.currencyName}
+                  </Typography>
+                </TableCell>
+                <TableCell align="right">
+                  {formatCurrency(1, item.code)}
+                </TableCell>
+                <TableCell align="right">
+                  {formatCurrency(convertedAmount, item.code)}
+                </TableCell>
+              </TableRow>
+            );
+          })}
+        </TableBody>
+      </Table>
+    </TableContainer>
   );
 };
 
