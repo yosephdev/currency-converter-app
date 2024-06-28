@@ -1,96 +1,224 @@
 import React from "react";
-import { BrowserRouter as Router, Route, NavLink, Routes } from "react-router-dom";
-import { Nav, Navbar, NavbarBrand } from "react-bootstrap";
+import {
+  BrowserRouter as Router,
+  Route,
+  NavLink,
+  Routes,
+} from "react-router-dom";
+import {
+  AppBar,
+  Toolbar,
+  Typography,
+  Container,
+  Box,
+  IconButton,
+  Button,
+  Menu,
+  MenuItem,
+} from "@mui/material";
+import MenuIcon from "@mui/icons-material/Menu";
 import CurrencyConverterPage from "./CurrencyConverterPage";
 import CurrencyExchangePage from "./CurrencyExchangePage";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHandHoldingUsd } from "@fortawesome/free-solid-svg-icons";
-import { faGithubAlt, faLinkedin } from "@fortawesome/free-brands-svg-icons";
+import { faGlobe } from "@fortawesome/free-solid-svg-icons";
+import { faGithubSquare, faLinkedin } from "@fortawesome/free-brands-svg-icons";
 import logo from "../styles/images/favicon.ico";
-import "../styles/style.css";
+import { styled } from "@mui/system";
 
-const NotFound = () => <h3>404 Sorry, this page was not found</h3>;
+const StyledNavLink = styled(NavLink)(({ theme }) => ({
+  color: theme.palette.common.white,
+  textDecoration: "none",
+  "&:hover": {
+    textDecoration: "underline",
+  },
+}));
+
+const Footer = styled(Box)(({ theme }) => ({
+  backgroundColor: theme.palette.grey[200],
+  padding: theme.spacing(3, 0),
+}));
+
+const NotFound = () => (
+  <Typography variant="h3">404 Sorry, this page was not found</Typography>
+);
 
 const Routing = () => {
+  const [anchorElNav, setAnchorElNav] = React.useState(null);
+
+  const handleOpenNavMenu = (event) => {
+    setAnchorElNav(event.currentTarget);
+  };
+
+  const handleCloseNavMenu = () => {
+    setAnchorElNav(null);
+  };
+
   return (
     <Router>
-      <Navbar collapseOnSelect expand="lg" className="nav-bar custom-navbar">
-        <NavbarBrand className="custom-navbar-brand">
-          <NavLink to="/" id="nav-links" className="custom-nav-link">
-            <FontAwesomeIcon icon={faHandHoldingUsd} className="coin-icon" />
-            <span className="brand custom-brand">CurrencyXchange</span>
-          </NavLink>
-        </NavbarBrand>
-        <Navbar.Toggle
-          aria-controls="responsive-navbar-nav"
-          className="custom-navbar-toggle"
-        />
-        <Navbar.Collapse id="responsive-navbar-nav">
-          <Nav className="mr-auto">
-            <NavLink to="/" className="nav-link">
-              Home
-            </NavLink>
-            <NavLink
-              to="/currency-converter"
-              className="nav-link"
-              
+      <AppBar position="static">
+        <Container maxWidth="xl">
+          <Toolbar disableGutters>
+            <FontAwesomeIcon
+              icon={faHandHoldingUsd}
+              size="2x"
+              style={{ marginRight: "10px" }}
+            />
+            <Typography
+              variant="h6"
+              noWrap
+              component={StyledNavLink}
+              to="/"
+              sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}
             >
-              Currency Converter
-            </NavLink>
-            <NavLink
-              to="/exchange-rates"
-              className="nav-link"
-              
-            >
-              Exchange Rates
-            </NavLink>
-          </Nav>
-        </Navbar.Collapse>
-      </Navbar>
+              CurrencyXchange
+            </Typography>
 
-      <Routes>
-        <Route path="/" element={<CurrencyConverterPage />} />
-        <Route path="/currency-converter" element={<CurrencyConverterPage />} />
-        <Route path="/exchange-rates" element={<CurrencyExchangePage />} />
-        <Route path="*" element={<NotFound />} />
-      </Routes>
-      <footer id="footer" className="container-fluid">
-        <div className="row py-3 mx-xl-4 px-xl-4">
-          <div className="col-12 d-flex flex-column flex-md-row justify-content-evenly justify-content-md-between px-md-5 px-xl-0">
-            <a
-              href="https://yoseph.dev"
-              target="_blank"
-              rel="noreferrer noopener"
-              className="order-2 order-md-1 ms-2 my-2"
-            >
-              <img src={logo} alt="yb logo" width="30" /> built by Yoseph
-              Berhane
-            </a>
-            <div className="d-flex align-self-center footer-brand order-1 order-md-2 pb-3">
-              <FontAwesomeIcon icon={faHandHoldingUsd} className="coin-icon" />
-              <span className="brand fw-bold ms-2 ps-1">CurrencyXchange</span>
-            </div>
-            <div className="d-flex order-3 my-2 me-3">
-              <a
-                href="https://www.linkedin.com/in/yosephbet/"
+            <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
+              <IconButton
+                size="large"
+                aria-label="account of current user"
+                aria-controls="menu-appbar"
+                aria-haspopup="true"
+                onClick={handleOpenNavMenu}
+                color="inherit"
+              >
+                <MenuIcon />
+              </IconButton>
+              <Menu
+                id="menu-appbar"
+                anchorEl={anchorElNav}
+                anchorOrigin={{
+                  vertical: "bottom",
+                  horizontal: "left",
+                }}
+                keepMounted
+                transformOrigin={{
+                  vertical: "top",
+                  horizontal: "left",
+                }}
+                open={Boolean(anchorElNav)}
+                onClose={handleCloseNavMenu}
+                sx={{
+                  display: { xs: "block", md: "none" },
+                }}
+              >
+                <MenuItem
+                  onClick={handleCloseNavMenu}
+                  component={StyledNavLink}
+                  to="/"
+                >
+                  Home
+                </MenuItem>
+                <MenuItem
+                  onClick={handleCloseNavMenu}
+                  component={StyledNavLink}
+                  to="/currency-converter"
+                >
+                  Currency Converter
+                </MenuItem>
+                <MenuItem
+                  onClick={handleCloseNavMenu}
+                  component={StyledNavLink}
+                  to="/exchange-rates"
+                >
+                  Exchange Rates
+                </MenuItem>
+              </Menu>
+            </Box>
+
+            <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
+              <Button
+                component={StyledNavLink}
+                to="/"
+                sx={{ my: 2, color: "white", display: "block" }}
+              >
+                Home
+              </Button>
+              <Button
+                component={StyledNavLink}
+                to="/currency-converter"
+                sx={{ my: 2, color: "white", display: "block" }}
+              >
+                Currency Converter
+              </Button>
+              <Button
+                component={StyledNavLink}
+                to="/exchange-rates"
+                sx={{ my: 2, color: "white", display: "block" }}
+              >
+                Exchange Rates
+              </Button>
+            </Box>
+          </Toolbar>
+        </Container>
+      </AppBar>
+
+      <Container component="main" sx={{ mt: 4, mb: 4 }}>
+        <Routes>
+          <Route path="/" element={<CurrencyConverterPage />} />
+          <Route
+            path="/currency-converter"
+            element={<CurrencyConverterPage />}
+          />
+          <Route path="/exchange-rates" element={<CurrencyExchangePage />} />
+          <Route path="*" element={<NotFound />} />
+        </Routes>
+      </Container>
+
+      <Footer component="footer">
+        <Container maxWidth="lg">
+          <Box
+            display="flex"
+            justifyContent="space-between"
+            alignItems="center"
+          >
+            <Box>
+              <Typography variant="body2" color="text.secondary">
+                <img
+                  src={logo}
+                  alt="yb logo"
+                  width="30"
+                  style={{ marginRight: "10px" }}
+                />
+                (c) 2024
+              </Typography>
+            </Box>
+            <Box>
+              <Typography variant="h6" color="text.primary">
+                <FontAwesomeIcon
+                  icon={faHandHoldingUsd}
+                  style={{ marginRight: "10px" }}
+                />
+                CurrencyXchange
+              </Typography>
+            </Box>
+            <Box>
+              <IconButton
+                href="www.linkedin.com/in/yoseph-berhane"
                 target="_blank"
-                className="ms-3"
                 rel="noreferrer"
               >
                 <FontAwesomeIcon icon={faLinkedin} />
-              </a>
-              <a
+              </IconButton>
+              <IconButton
                 href="https://github.com/yosephdev"
                 target="_blank"
-                className="ms-3"
                 rel="noreferrer"
               >
-                <FontAwesomeIcon icon={faGithubAlt} />
-              </a>
-            </div>
-          </div>
-        </div>
-      </footer>
+                <FontAwesomeIcon icon={faGithubSquare} />
+              </IconButton>
+              <IconButton
+                href="https://yoseph.dev"
+                target="_blank"
+                rel="noreferrer"
+              >
+                <FontAwesomeIcon icon={faGlobe} />
+              </IconButton>
+            </Box>
+          </Box>
+        </Container>
+      </Footer>
     </Router>
   );
 };
