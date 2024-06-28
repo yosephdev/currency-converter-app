@@ -1,55 +1,110 @@
 import React from "react";
+import PropTypes from "prop-types";
+import {
+  Select,
+  MenuItem,
+  FormControl,
+  InputLabel,
+  ListItemIcon,
+  ListItemText,
+} from "@mui/material";
+import { styled } from "@mui/system";
+import { getFlagImageUrl } from "./utils";
 
-// Returns dropdown selector with flags and full currency names
+const StyledSelect = styled(Select)({
+  "& .MuiSelect-select": {
+    display: "flex",
+    alignItems: "center",
+  },
+});
 
-const CurrencySelector = (props) => {
-  // default converter GBP to JPY
-  // default exchange base currency GBP
+const FlagImg = styled("img")({
+  width: "20px",
+  marginRight: "8px",
+  verticalAlign: "middle",
+});
 
+const currencies = [
+  { code: "AUD", name: "Australian Dollar" },
+  { code: "BGN", name: "Bulgarian Lev" },
+  { code: "BRL", name: "Brazilian Real" },
+  { code: "CAD", name: "Canadian Dollar" },
+  { code: "CHF", name: "Swiss Franc" },
+  { code: "CNY", name: "Chinese Renminbi Yuan" },
+  { code: "CZK", name: "Czech Koruna" },
+  { code: "DKK", name: "Danish Krone" },
+  { code: "EUR", name: "Euro" },
+  { code: "GBP", name: "British Pound" },
+  { code: "HKD", name: "Hong Kong Dollar" },
+  { code: "HRK", name: "Croatian Kuna" },
+  { code: "HUF", name: "Hungarian Forint" },
+  { code: "IDR", name: "Indonesian Rupiah" },
+  { code: "ILS", name: "Israeli New Sheqel" },
+  { code: "INR", name: "Indian Rupee" },
+  { code: "ISK", name: "Icelandic Króna" },
+  { code: "JPY", name: "Japanese Yen" },
+  { code: "KRW", name: "South Korean Won" },
+  { code: "MXN", name: "Mexican Peso" },
+  { code: "MYR", name: "Malaysian Ringgit" },
+  { code: "NOK", name: "Norwegian Krone" },
+  { code: "NZD", name: "New Zealand Dollar" },
+  { code: "PHP", name: "Philippine Peso" },
+  { code: "PLN", name: "Polish Złoty" },
+  { code: "RON", name: "Romanian Leu" },
+  { code: "RUB", name: "Russian Ruble" },
+  { code: "SEK", name: "Swedish Krona" },
+  { code: "SGD", name: "Singapore Dollar" },
+  { code: "THB", name: "Thai Baht" },
+  { code: "TRY", name: "Turkish Lira" },
+  { code: "USD", name: "United States Dollar" },
+  { code: "ZAR", name: "South African Rand" },
+];
+
+const CurrencySelector = ({ name, value, onChange, label }) => {
   return (
-    <select
-      className="form-select ps-xl-3"
-      id={props.name}
-      name={props.name}
-      onChange={props.handleCurrencyChange}
-      value={props.value}
-      defaultValue={props.defaultVal}
-    >
-      <option value="AUD">🇦🇺 AUD - Australian Dollar</option>
-      <option value="BGN">🇧🇬 BGN - Bulgarian Lev</option>
-      <option value="BRL">🇧🇷 BRL - Brazilian Real</option>
-      <option value="CAD">🇨🇦 CAD - Canadian Dollar</option>
-      <option value="CHF">🇨🇭 CHF - Swiss Franc</option>
-      <option value="CNY">🇨🇳 CNY - Chinese Renminbi Yuan</option>
-      <option value="CZK">🇨🇿 CZK - Czech Koruna</option>
-      <option value="DKK">🇩🇰 DKK - Danish Krone</option>
-      <option value="EUR">🇪🇺 EUR - Euro</option>
-      <option value="GBP">🇬🇧 GBP - British Pound</option>
-      <option value="HKD">🇭🇰 HKD - Hong Kong Dollar</option>
-      <option value="HRK">🇭🇷 HRK - Croatian Kuna</option>
-      <option value="HUF">🇭🇺 HUF - Hungarian Forint</option>
-      <option value="IDR">🇮🇩 IDR - Indonesian Rupiah</option>
-      <option value="ILS">🇮🇱 ILS - Israeli New Sheqel</option>
-      <option value="INR">🇮🇳 INR - Indian Rupee</option>
-      <option value="ISK">🇮🇸 ISK - Icelandic Króna</option>
-      <option value="JPY">🇯🇵 JPY - Japanese Yen</option>
-      <option value="KRW">🇰🇷 KRW - South Korean Won</option>
-      <option value="MXN">🇲🇽 MXN - Mexican Peso</option>
-      <option value="MYR">🇲🇾 MYR - Malaysian Ringgit</option>
-      <option value="NOK">🇳🇴 NOK - Norwegian Krone</option>
-      <option value="NZD">🇳🇿 NZD - New Zealand Dollar</option>
-      <option value="PHP">🇵🇭 PHP - Philippine Peso</option>
-      <option value="PLN">🇵🇱 PLN - Polish Złoty</option>
-      <option value="RON">🇷🇴 RON - Romanian Leu</option>
-      <option value="RUB">🇷🇺 RUB - Russian Ruble</option>
-      <option value="SEK">🇸🇪 SEK - Swedish Krona</option>
-      <option value="SGD">🇸🇬 SGD - Singapore Dollar</option>
-      <option value="THB">🇹🇭 THB - Thai Baht</option>
-      <option value="TRY">🇹🇷 TRY - Turkish Lira</option>
-      <option value="USD">🇺🇸 USD - United States Dollar</option>
-      <option value="ZAR">🇿🇦 ZAR - South African Rand</option>
-    </select>
+    <FormControl fullWidth variant="outlined">
+      <InputLabel id={`${name}-label`}>{label}</InputLabel>
+      <StyledSelect
+        labelId={`${name}-label`}
+        id={name}
+        name={name}
+        value={value}
+        onChange={onChange}
+        label={label}
+        renderValue={(selected) => {
+          const currency = currencies.find((c) => c.code === selected);
+          return (
+            <div style={{ display: "flex", alignItems: "center" }}>
+              <FlagImg
+                src={getFlagImageUrl(currency.code)}
+                alt={`${currency.name} flag`}
+              />
+              {currency.code}
+            </div>
+          );
+        }}
+      >
+        {currencies.map((currency) => (
+          <MenuItem key={currency.code} value={currency.code}>
+            <ListItemIcon>
+              <FlagImg
+                src={getFlagImageUrl(currency.code)}
+                alt={`${currency.name} flag`}
+              />
+            </ListItemIcon>
+            <ListItemText primary={`${currency.code} - ${currency.name}`} />
+          </MenuItem>
+        ))}
+      </StyledSelect>
+    </FormControl>
   );
+};
+
+CurrencySelector.propTypes = {
+  name: PropTypes.string.isRequired,
+  value: PropTypes.string.isRequired,
+  onChange: PropTypes.func.isRequired,
+  label: PropTypes.string.isRequired,
 };
 
 export default CurrencySelector;
