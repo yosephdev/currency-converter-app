@@ -1,6 +1,6 @@
 # CurrencyXchange
 
-![CurrencyXchange Logo](preview.png)
+![CurrencyXchange Logo](image-mockup.png)
 
 CurrencyXchange is a robust and user-friendly application designed for real-time currency conversion and exchange rate information. With a sleek and intuitive interface, it provides users with accurate and up-to-date financial data.
 
